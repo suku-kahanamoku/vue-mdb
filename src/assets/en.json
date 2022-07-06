@@ -1,0 +1,17 @@
+{
+    "signin": "Sign in",
+    "signup": "Sign up",
+    "reset_pass": "Forgot password?",
+    "not_account": "Don't have an account?",
+    "btn": {
+        "login": "Login",
+        "google_login": "Sign in with google",
+        "fb_login": "Sign in with facebook",
+        "send": "Odeslat",
+        "back_to_login": "Back to login"
+    },
+    "form": {
+        "email": "E-mail",
+        "password": "Password"
+    }
+}

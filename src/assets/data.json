@@ -1,0 +1,14 @@
+{
+    "routes": [
+        {
+            "path": "/login",
+            "name": "login",
+            "component": "login"
+        },
+        {
+            "path": "/reset-password",
+            "name": "reset_pass",
+            "component": "reset_pass"
+        }
+    ]
+}

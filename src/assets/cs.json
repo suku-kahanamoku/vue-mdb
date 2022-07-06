@@ -1,0 +1,17 @@
+{
+    "signin": "Přihlášení",
+    "reset_pass": "Zapomenuté heslo?",
+    "not_account": "Nemáte účet?",
+    "signup": "Registrovat se",
+    "btn": {
+        "login": "Přihlásit",
+        "google_login": "Přihlášení google účtem",
+        "fb_login": "Přihlášení facebook účtem",
+        "send": "Odeslat",
+        "back_to_login": "Zpět na přihlášení"
+    },
+    "form": {
+        "email": "E-mail",
+        "password": "Heslo"
+    }
+}
