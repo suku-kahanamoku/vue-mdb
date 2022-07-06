@@ -9,6 +9,11 @@
             "path": "/reset-password",
             "name": "reset_pass",
             "component": "reset_pass"
+        },
+        {
+            "path": "/signup",
+            "name": "signup",
+            "component": "signup"
         }
     ]
 }

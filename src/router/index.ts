@@ -7,6 +7,7 @@ const CMPS: any = {
   'home': Home,
   'login': () => import('@/views/Login.vue'),
   'reset_pass': () => import('@/views/ResetPass.vue'),
+  'signup': () => import('@/views/Signup.vue'),
 };
 
 const routes = JSON.parse(JSON.stringify(data.routes));

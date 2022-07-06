@@ -2,7 +2,7 @@
     "signin": "Přihlášení",
     "reset_pass": "Zapomenuté heslo?",
     "not_account": "Nemáte účet?",
-    "signup": "Registrovat se",
+    "signup": "Registrace",
     "btn": {
         "login": "Přihlásit",
         "google_login": "Přihlášení google účtem",
@@ -12,6 +12,10 @@
     },
     "form": {
         "email": "E-mail",
-        "password": "Heslo"
+        "password": "Heslo",
+        "repeat_pass": "Opakovat heslo",
+        "firstname": "Κřestní jméno",
+        "lastname": "Přijmení",
+        "phone": "Telefon"
     }
 }

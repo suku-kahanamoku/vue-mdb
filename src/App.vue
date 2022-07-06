@@ -16,4 +16,9 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   background-color: #74a2f8 !important;
 }
+
+.invalid-feedback {
+  font-size: .7rem !important;
+  margin-top: -1rem !important;
+}
 </style>

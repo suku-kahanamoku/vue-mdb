@@ -12,10 +12,15 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBInput } fro
 
           <MDBCard class="p-4 text-center" shadow="5">
             <MDBCardBody>
-              <MDBCardTitle class="mb-5">{{ $t('reset_pass') }}</MDBCardTitle>
+              <MDBCardTitle class="mb-5">{{ $t('signup') }}</MDBCardTitle>
 
               <MDBCardText>
+                <MDBInput type="text" :label="$t('form.firstname')" autocomplete="given-name" wrapperClass="mb-4" />
+                <MDBInput type="text" :label="$t('form.lastname')" autocomplete="family-name" wrapperClass="mb-4" />
                 <MDBInput type="email" :label="$t('form.email')" autocomplete="email" wrapperClass="mb-4" />
+                <MDBInput type="tel" :label="$t('form.phone')" autocomplete="tel" wrapperClass="mb-4" />
+                <MDBInput type="password" :label="$t('form.password')" autocomplete="new-password" wrapperClass="mb-4" />
+                <MDBInput type="password" :label="$t('form.repeat_pass')" wrapperClass="mb-4" />
               </MDBCardText>
 
               <div class="d-flex justify-content-between">

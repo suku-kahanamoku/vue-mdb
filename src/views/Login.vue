@@ -2,6 +2,12 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBInput } from 'mdb-vue-ui-kit';
+import TextField from '@/components/form/field/TextField.vue';
+
+const neco = { name: 'email', label: 'form.email', required: true, class: 'mb-4', validation: { pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, msg: 'spatny format' } };
+const checkForm = (e: any) => {
+  e.target.classList.add("was-validated");
+};
 </script>
 
 <template>
@@ -14,15 +20,20 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBInput } fro
             <MDBCardBody>
               <MDBCardTitle class="mb-5">{{ $t('signin') }}</MDBCardTitle>
 
-              <MDBCardText>
-                <MDBInput type="Email" :label="$t('form.email')" class="mb-4" />
-                <MDBInput type="Password" :label="$t('form.password')" class="mb-4" />
-                <RouterLink to="/reset-password" class="text-black-50">{{ $t('reset_pass') }}</RouterLink>
-              </MDBCardText>
+              <form novalidate @submit.prevent="checkForm" class="was-validated">
+                <MDBCardText>
+                  <TextField :field="neco" />
+                  <MDBInput type="password" :label="$t('form.password')" autocomplete="current-password"
+                    wrapperClass="mb-4" required />
+                  <RouterLink to="/reset-password" class="text-black-50">{{ $t('reset_pass') }}</RouterLink>
+                </MDBCardText>
 
-              <MDBBtn class="d-none d-sm-block btn btn-block" size="lg" color="primary">{{ $t('btn.login') }}</MDBBtn>
+                <MDBBtn type="submit" class="d-none d-sm-block btn btn-block" size="lg" color="primary">{{
+                    $t('btn.login')
+                }}</MDBBtn>
 
-              <MDBBtn class="d-sm-none btn" size="lg" color="primary">{{ $t('btn.login') }}</MDBBtn>
+                <MDBBtn type="submit" class="d-sm-none btn" size="lg" color="primary">{{ $t('btn.login') }}</MDBBtn>
+              </form>
 
               <hr class="my-4">
 

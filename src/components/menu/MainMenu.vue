@@ -7,7 +7,7 @@ import {
 
 import Logo from '@/components/img/Logo.vue';
 import SideMenu from '@/components/menu/SideMenu.vue';
-import FlagMenu from './FlagMenu.vue';
+import FlagMenu from '@/components/menu/FlagMenu.vue';
 
 defineProps<{
   data?: any[]
