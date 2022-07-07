@@ -38,5 +38,58 @@
                 }
             }
         ]
+    },
+    "signup": {
+        "fields": [
+            {
+                "name": "firstname",
+                "label": "form.firstname",
+                "required": true,
+                "autocomplete": "given-name",
+                "class": "mb-4"
+            },
+            {
+                "name": "lastname",
+                "label": "form.lastname",
+                "required": true,
+                "autocomplete": "family-name",
+                "class": "mb-4"
+            },
+            {
+                "type": "email",
+                "name": "email",
+                "label": "form.email",
+                "required": true,
+                "autocomplete": "email",
+                "class": "mb-4",
+                "validation": {
+                    "pattern": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+                    "msg": "form.msg.wrong_email"
+                }
+            },
+            {
+                "type": "tel",
+                "name": "phone",
+                "label": "form.phone",
+                "autocomplete": "tel",
+                "class": "mb-4"
+            },
+            {
+                "type": "password",
+                "name": "password",
+                "label": "form.password",
+                "required": true,
+                "autocomplete": "new-password",
+                "class": "mb-4"
+            },
+            {
+                "type": "password",
+                "name": "repeat_pass",
+                "label": "form.repeat_pass",
+                "required": true,
+                "autocomplete": "current-password",
+                "class": "mb-4"
+            }
+        ]
     }
 }
