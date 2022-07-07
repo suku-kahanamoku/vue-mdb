@@ -16,6 +16,9 @@
         "repeat_pass": "Repeat password",
         "firstname": "First name",
         "lastname": "Last name",
-        "phone": "Phone"
+        "phone": "Phone",
+        "msg": {
+            "wrong_email": "Wrong E-mail format!"
+        }
     }
 }

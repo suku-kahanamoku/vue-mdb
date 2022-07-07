@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBInput } from 'mdb-vue-ui-kit';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
+
+import data from '@/assets/form.json';
+import TextField from '@/components/form/field/TextField.vue';
 </script>
 
 <template>
@@ -15,7 +18,7 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBInput } fro
               <MDBCardTitle class="mb-5">{{ $t('reset_pass') }}</MDBCardTitle>
 
               <MDBCardText>
-                <MDBInput type="email" :label="$t('form.email')" autocomplete="email" wrapperClass="mb-4" />
+                <TextField v-for="field in data.reset_pass.fields" :field="(field as any)" />
               </MDBCardText>
 
               <div class="d-flex justify-content-between">

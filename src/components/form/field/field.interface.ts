@@ -86,7 +86,7 @@ export interface IFormField {
      * @type {{ pattern?: string }}
      * @memberof IFormField
      */
-    validation?: { pattern?: RegExp, msg: string };
+    validation?: { pattern?: string, msg: string };
 
     /**
      * Ikona

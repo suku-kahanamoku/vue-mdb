@@ -202,3 +202,14 @@ export function GET_MOUSE_POSITION(position: number, type: 'x' | 'y'): number {
   }
   return position;
 }
+
+export function ADD_SLASHES(value: string): string {
+  return value?.replace(/\\/g, '\\\\').
+    replace(/\u0008/g, '\\b').
+    replace(/\t/g, '\\t').
+    replace(/\n/g, '\\n').
+    replace(/\f/g, '\\f').
+    replace(/\r/g, '\\r').
+    replace(/'/g, '\\\'').
+    replace(/"/g, '\\"');
+}

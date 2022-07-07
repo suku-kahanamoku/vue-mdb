@@ -16,6 +16,9 @@
         "repeat_pass": "Opakovat heslo",
         "firstname": "Κřestní jméno",
         "lastname": "Přijmení",
-        "phone": "Telefon"
+        "phone": "Telefon",
+        "msg": {
+            "wrong_email": "Špatně zadaný E-mail!"
+        }
     }
 }

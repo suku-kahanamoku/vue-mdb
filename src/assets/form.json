@@ -1,0 +1,42 @@
+{
+    "login": {
+        "fields": [
+            {
+                "type": "email",
+                "name": "email",
+                "label": "form.email",
+                "required": true,
+                "autocomplete": "email",
+                "class": "mb-4",
+                "validation": {
+                    "pattern": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+                    "msg": "form.msg.wrong_email"
+                }
+            },
+            {
+                "type": "password",
+                "name": "password",
+                "label": "form.password",
+                "required": true,
+                "autocomplete": "current-password",
+                "class": "mb-4"
+            }
+        ]
+    },
+    "reset_pass": {
+        "fields": [
+            {
+                "type": "email",
+                "name": "email",
+                "label": "form.email",
+                "required": true,
+                "autocomplete": "email",
+                "class": "mb-4",
+                "validation": {
+                    "pattern": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+                    "msg": "form.msg.wrong_email"
+                }
+            }
+        ]
+    }
+}

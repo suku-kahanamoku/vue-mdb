@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBInput } from 'mdb-vue-ui-kit';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
+
+import data from '@/assets/form.json';
 import TextField from '@/components/form/field/TextField.vue';
 
-const neco = { name: 'email', label: 'form.email', required: true, class: 'mb-4', validation: { pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, msg: 'spatny format' } };
 const checkForm = (e: any) => {
   e.target.classList.add("was-validated");
 };
@@ -20,11 +21,9 @@ const checkForm = (e: any) => {
             <MDBCardBody>
               <MDBCardTitle class="mb-5">{{ $t('signin') }}</MDBCardTitle>
 
-              <form novalidate @submit.prevent="checkForm" class="was-validated">
+              <form novalidate @submit.prevent="checkForm">
                 <MDBCardText>
-                  <TextField :field="neco" />
-                  <MDBInput type="password" :label="$t('form.password')" autocomplete="current-password"
-                    wrapperClass="mb-4" required />
+                  <TextField v-for="field in data.login.fields" :field="(field as any)" />
                   <RouterLink to="/reset-password" class="text-black-50">{{ $t('reset_pass') }}</RouterLink>
                 </MDBCardText>
 
