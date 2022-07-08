@@ -7,6 +7,8 @@
                 "label": "form.email",
                 "required": true,
                 "autocomplete": "email",
+                "checkAutofill": true,
+                "autofocus": true,
                 "class": "mb-4",
                 "validation": {
                     "pattern": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
@@ -19,6 +21,7 @@
                 "label": "form.password",
                 "required": true,
                 "autocomplete": "current-password",
+                "checkAutofill": true,
                 "class": "mb-4"
             }
         ]

@@ -95,3 +95,19 @@ export function IS_OBJECT_ID(objectid: string) {
     ? false
     : /^[0-9A-F]{24}$/i.test(objectid.toString());
 };
+
+/**
+ * Kontrola, zda field byl doplnen automaticky prohlizecem
+ *
+ * @export
+ * @param {HTMLElement} field
+ * @return {*}  {Promise<boolean>}
+ */
+export function DETECT_AUTOFILL(field: HTMLElement): Promise<boolean> {
+  return new Promise(
+    resolve => setTimeout(
+      () => resolve(window.getComputedStyle(field, null).getPropertyValue('appearance') === 'menulist-button'),
+      400
+    )
+  )
+}

@@ -191,7 +191,7 @@ export interface IFormField {
     smartform?: { value: string, disabled: boolean };
 
     /**
-     *
+     * Pomocne tridy
      *
      * @type {string}
      * @memberof IFormField
@@ -199,7 +199,7 @@ export interface IFormField {
     class?: string;
 
     /**
-     *
+     * Velikost
      *
      * @type {('sm' | 'md' | 'lg')}
      * @memberof IFormField
@@ -213,6 +213,22 @@ export interface IFormField {
      * @memberof IFormField
      */
     helper?: string;
+
+    /**
+     * Auto. focus
+     *
+     * @type {boolean}
+     * @memberof IFormField
+     */
+    autofocus?: boolean;
+
+    /**
+     * Priznak zda spustit kontrolu na automaticke doplnovani prohlizecem
+     *
+     * @type {boolean}
+     * @memberof IFormField
+     */
+    checkAutofill?: boolean;
 }
 
 /**
