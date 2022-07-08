@@ -14,17 +14,22 @@ const inputEl: Ref<HTMLSelectElement | undefined> = ref();
 const model = ref('');
 const visited = ref(false);
 
-async function checkAutofill() {
-    if (await DETECT_AUTOFILL(inputEl.value)) {
-        inputEl.value?.classList.add('active');
-    }
+function inputProcess(): void {
+    setTimeout(() => {
+        // automaticky zpracuje autofill
+        if (inputEl.value && DETECT_AUTOFILL(inputEl.value)) {
+            inputEl.value?.classList.add('active');
+        }
+        // spusti autofocus
+        if (props.field.autofocus) {
+            inputEl.value?.focus();
+        }
+    }, 400);
 }
 
 onMounted(() => {
     inputEl.value = (el.value as any).inputRef;
-    if (props.field.checkAutofill) {
-        checkAutofill();
-    }
+    inputProcess();
 });
 </script>
 
@@ -33,8 +38,8 @@ onMounted(() => {
         :label="$t(field.label) + (field.required ? ' *' : '')"
         :placeholder="field.placeholder ? $t(field.placeholder) : ''" :autocomplete="field.autocomplete"
         :wrapperClass="field.class" :size="field.size" :maxlength="field.maxlength" :minlength="field.minlength"
-        :value="field.value" :disabled="field.disabled" :readonly="field.readonly" :autofocus="field.autofocus"
-        :required="field.required" :pattern="field.validation?.pattern"
+        :value="field.value" :disabled="field.disabled" :readonly="field.readonly" :required="field.required"
+        :pattern="field.validation?.pattern"
         :invalidFeedback="field.validation?.msg && !inputEl?.checkValidity() ? $t(field.validation?.msg) : ''"
         :isValidated="!inputEl?.checkValidity() && visited" @blur="visited = true">
         <MDBIcon v-if="field.icon?.value" :icon="field.icon?.value" class="trailing" />

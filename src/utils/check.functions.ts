@@ -100,16 +100,9 @@ export function IS_OBJECT_ID(objectid: string) {
  * Kontrola, zda field byl doplnen automaticky prohlizecem
  *
  * @export
- * @param {HTMLElement} [field]
- * @return {*}  {(Promise<boolean> | undefined)}
+ * @param {HTMLElement} field
+ * @return {*}  {boolean}
  */
-export function DETECT_AUTOFILL(field?: HTMLElement): Promise<boolean> | undefined {
-  if (field) {
-    return new Promise(
-      resolve => setTimeout(
-        () => resolve(window.getComputedStyle(field, null).getPropertyValue('appearance') === 'menulist-button'),
-        400
-      )
-    );
-  }
+export function DETECT_AUTOFILL(field: HTMLElement): boolean {
+  return window.getComputedStyle(field, null).getPropertyValue('appearance') === 'menulist-button';
 }

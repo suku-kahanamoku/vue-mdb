@@ -221,14 +221,6 @@ export interface IFormField {
      * @memberof IFormField
      */
     autofocus?: boolean;
-
-    /**
-     * Priznak zda spustit kontrolu na automaticke doplnovani prohlizecem
-     *
-     * @type {boolean}
-     * @memberof IFormField
-     */
-    checkAutofill?: boolean;
 }
 
 /**
