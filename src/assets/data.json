@@ -14,6 +14,11 @@
             "path": "/signup",
             "name": "signup",
             "component": "signup"
+        },
+        {
+            "path": "/dashboard",
+            "name": "dashboard",
+            "component": "dashboard"
         }
     ]
 }

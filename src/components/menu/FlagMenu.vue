@@ -29,7 +29,7 @@ function selectLang(value: string): void {
 
 <template>
   <MDBDropdown v-model="dropdown">
-    <MDBDropdownToggle tag="span" @click="dropdown = !dropdown">
+    <MDBDropdownToggle tag="span" @click="dropdown = !dropdown" class="hidden-arrow">
       <CountryFlag :country="selected?.flag" />
     </MDBDropdownToggle>
     <MDBDropdownMenu>
@@ -45,9 +45,5 @@ function selectLang(value: string): void {
 <style scoped>
 .dropdown-menu {
   min-width: auto;
-}
-
-.dropdown-toggle::after {
-  display: none;
 }
 </style>

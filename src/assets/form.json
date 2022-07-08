@@ -87,7 +87,7 @@
                 "name": "repeat_pass",
                 "label": "form.repeat_pass",
                 "required": true,
-                "autocomplete": "current-password",
+                "autocomplete": "off",
                 "class": "mb-4"
             }
         ]

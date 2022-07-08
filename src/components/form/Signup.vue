@@ -17,7 +17,7 @@ const checkForm = (e: any) => {
 <template>
     <MDBCard class="p-4 text-center" shadow="5">
         <MDBCardBody>
-            <MDBCardTitle class="mb-5">{{ $t('signup') }}</MDBCardTitle>
+            <MDBCardTitle class="mb-5 text-uppercase">{{ $t('signup') }}</MDBCardTitle>
 
             <form novalidate @submit.prevent="checkForm">
                 <MDBCardText>

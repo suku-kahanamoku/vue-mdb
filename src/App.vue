@@ -4,21 +4,14 @@ import { RouterView } from 'vue-router';
 
 import data from '@/assets/data.json';
 import MainMenu from '@/components/menu/MainMenu.vue';
+import FooterMenu from '@/components/menu/FooterMenu.vue';
 </script>
 
 <template>
   <MainMenu :data="data.routes" />
   <RouterView />
+  <FooterMenu />
 </template>
 
 <style>
-body {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  background-color: #74a2f8 !important;
-}
-
-.invalid-feedback {
-  font-size: .7rem !important;
-  margin-top: -1rem !important;
-}
 </style>
