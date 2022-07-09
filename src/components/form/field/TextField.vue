@@ -2,7 +2,7 @@
 import { ref, onMounted, type Ref } from 'vue';
 import { MDBInput, MDBIcon } from 'mdb-vue-ui-kit';
 
-import type { IFormField } from './field.interface';
+import type { IFormField } from '@/components/form/field/field.interface';
 import { DETECT_AUTOFILL } from '@/utils/check.functions';
 
 const props = defineProps<{

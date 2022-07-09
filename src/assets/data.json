@@ -3,22 +3,20 @@
         {
             "path": "/login",
             "name": "login",
-            "component": "login"
+            "meta": {
+                "transition": "slide-left"
+            }
         },
         {
             "path": "/reset-password",
             "name": "reset_pass",
-            "component": "reset_pass"
+            "meta": {
+                "transition": "slide-right"
+            }
         },
         {
             "path": "/signup",
-            "name": "signup",
-            "component": "signup"
-        },
-        {
-            "path": "/dashboard",
-            "name": "dashboard",
-            "component": "dashboard"
+            "name": "signup"
         }
     ]
 }
