@@ -3,10 +3,11 @@ import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
 
+import type { IForm } from '@/components/form/form.interface';
 import TextField from '@/components/form/field/TextField.vue';
 
-defineProps<{
-    config: any
+const props = defineProps<{
+    config: IForm
 }>();
 
 const checkForm = (e: any) => {
@@ -21,7 +22,7 @@ const checkForm = (e: any) => {
 
             <form novalidate @submit.prevent="checkForm">
                 <MDBCardText>
-                    <TextField v-for="field in config.fields" :field="(field as any)" />
+                    <TextField v-for="field in config.fields" :field="field" />
                     <RouterLink to="/reset-password" class="text-black-50">{{ $t('reset_pass') }}</RouterLink>
                 </MDBCardText>
 

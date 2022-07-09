@@ -14,10 +14,6 @@ const languages = [
 ];
 const selected = ref();
 
-onMounted(() => {
-  selectLang(i18n.global.locale);
-});
-
 function changeLocale(locale: string): void {
   selectLang(i18n.global.locale = locale);
 }
@@ -25,16 +21,20 @@ function changeLocale(locale: string): void {
 function selectLang(value: string): void {
   selected.value = languages.find(item => item.lang === value);
 }
+
+onMounted(() => {
+  selectLang(i18n.global.locale);
+});
 </script>
 
 <template>
-  <MDBDropdown v-model="dropdown">
+  <MDBDropdown v-if="selected" v-model="dropdown">
     <MDBDropdownToggle tag="span" @click="dropdown = !dropdown" class="hidden-arrow">
-      <CountryFlag :country="selected?.flag" />
+      <CountryFlag :country="selected.flag" />
     </MDBDropdownToggle>
     <MDBDropdownMenu>
       <template v-for="item in languages">
-        <MDBDropdownItem v-if="selected?.lang !== item.lang" tag="button" @click="changeLocale(item.lang)">
+        <MDBDropdownItem v-if="selected.lang !== item.lang" tag="button" @click="changeLocale(item.lang)">
           <CountryFlag :country="item.flag" />
         </MDBDropdownItem>
       </template>

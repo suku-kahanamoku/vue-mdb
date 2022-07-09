@@ -9,10 +9,10 @@ const props = defineProps<{
     field: IFormField,
 }>();
 
-const el = ref('');
+const el: Ref<HTMLInputElement | undefined> = ref();
 const inputEl: Ref<HTMLSelectElement | undefined> = ref();
-const model = ref('');
-const visited = ref(false);
+const model: Ref<string | number | Date | undefined> = ref();
+const visited: Ref<boolean> = ref(false);
 
 function inputProcess(): void {
     setTimeout(() => {
