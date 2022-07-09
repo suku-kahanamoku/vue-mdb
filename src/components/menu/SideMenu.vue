@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router';
 
 import Logo from '@/components/img/Logo.vue';
 
-defineProps<{
+const props = defineProps<{
   id: string,
   site?: 'start' | 'end',
   data?: any[],

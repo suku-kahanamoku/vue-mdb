@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, type Ref } from 'vue';
 import {
   MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
 } from 'mdb-vue-ui-kit';
@@ -7,12 +7,12 @@ import CountryFlag from 'vue-country-flag-next';
 
 import i18n from '@/plugins/i18n';
 
-const dropdown = ref(false);
+const dropdown: Ref<boolean> = ref(false);
+const selected: Ref<{ flag: string, lang: string, title: string } | undefined> = ref();
 const languages = [
   { flag: 'gb', lang: 'en', title: 'English' },
   { flag: 'cz', lang: 'cs', title: 'Español' }
 ];
-const selected = ref();
 
 function changeLocale(locale: string): void {
   selectLang(i18n.global.locale = locale);

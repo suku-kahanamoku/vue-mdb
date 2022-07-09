@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import {
   MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
@@ -9,12 +9,12 @@ import Logo from '@/components/img/Logo.vue';
 import SideMenu from '@/components/menu/SideMenu.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
 
-defineProps<{
+const props = defineProps<{
   data?: any[]
 }>();
 
-const sideSelector = 'sidenav';
-const dropdown = ref(false);
+const sideSelector: string = 'sidenav';
+const dropdown: Ref<boolean> = ref(false);
 </script>
 
 <template>
