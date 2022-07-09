@@ -23,7 +23,7 @@ const checkForm = (e: any) => {
             <form novalidate @submit.prevent="checkForm">
                 <MDBCardText>
                     <TextField v-for="field in config.fields" :field="field" />
-                    <RouterLink to="/reset-password" class="text-black-50">{{ $t('reset_pass') }}</RouterLink>
+                    <RouterLink :to="{ name: 'reset_pass' }" class="text-black-50">{{ $t('reset_pass') }}</RouterLink>
                 </MDBCardText>
 
                 <MDBBtn type="submit" class="d-none d-sm-block btn btn-block" size="lg" color="primary">{{
@@ -59,7 +59,7 @@ const checkForm = (e: any) => {
 
             <!-- registrace -->
             <p class="mt-5 mb-0">{{ $t('not_account') }}
-                <RouterLink to="/signup" class="text-black-50 fw-bold">{{ $t('signup') }}</RouterLink>
+                <RouterLink :to="{ name: 'signup' }" class="text-black-50 fw-bold">{{ $t('signup') }}</RouterLink>
             </p>
         </MDBCardBody>
     </MDBCard>

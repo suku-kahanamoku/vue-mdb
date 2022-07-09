@@ -28,7 +28,9 @@ const checkForm = (e: any) => {
                 <div class="d-flex justify-content-between">
                     <span class="d-flex align-items-center text-black-50">
                         <i class="fa fa-chevron-left me-1"></i>
-                        <RouterLink to="/login" class="text-black-50">{{ $t('btn.back_to_login') }}</RouterLink>
+                        <RouterLink :to="{ name: 'login' }" class="text-black-50">
+                            {{ $t('btn.back_to_login') }}
+                        </RouterLink>
                     </span>
                     <MDBBtn type="submit" color="primary">{{ $t('btn.send') }}</MDBBtn>
                 </div>

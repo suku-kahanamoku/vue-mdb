@@ -15,7 +15,7 @@ const props = defineProps<{
   <!-- sidebar menu -->
   <div :class="'offcanvas offcanvas-' + (site || 'start')" :id="id">
     <div class="offcanvas-header">
-      <RouterLink to="/">
+      <RouterLink :to="{ name: 'home' }">
         <Logo />
       </RouterLink>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -23,7 +23,7 @@ const props = defineProps<{
     <div class="offcanvas-body">
       <ul class="navbar-nav">
         <li v-for="route in data" class="nav-item">
-          <RouterLink :to="route.path" class="nav-link">{{ route.name }}</RouterLink>
+          <RouterLink :to="{ name: route.name }" class="nav-link">{{ route.name }}</RouterLink>
         </li>
       </ul>
     </div>

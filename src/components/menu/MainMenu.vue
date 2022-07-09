@@ -21,7 +21,7 @@ const dropdown: Ref<boolean> = ref(false);
   <MDBNavbar light bg="light" container class="w-100">
     <!-- logo -->
     <MDBNavbarBrand href="#">
-      <RouterLink to="/">
+      <RouterLink :to="{ name: 'home' }">
         <Logo />
       </RouterLink>
     </MDBNavbarBrand>
@@ -34,7 +34,7 @@ const dropdown: Ref<boolean> = ref(false);
           <MDBDropdownToggle tag="span" class="nav-link" @click="dropdown = !dropdown">Dropdown</MDBDropdownToggle>
           <MDBDropdownMenu>
             <MDBDropdownItem v-for="route in data">
-              <RouterLink :to="route.path" class="dropdown-item">{{ route.name }}</RouterLink>
+              <RouterLink :to="{ name: route.name }" class="dropdown-item">{{ route.name }}</RouterLink>
             </MDBDropdownItem>
           </MDBDropdownMenu>
         </MDBDropdown>
@@ -46,7 +46,7 @@ const dropdown: Ref<boolean> = ref(false);
       </MDBNavbarItem>
 
       <!-- login -->
-      <MDBNavbarItem to="/login" class="me-3">
+      <MDBNavbarItem :to="{ name: 'login' }" class="me-3">
         <MDBIcon icon="user"></MDBIcon>
       </MDBNavbarItem>
 
