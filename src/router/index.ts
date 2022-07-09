@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import PageNotFound from '@/views/404.vue';
 import Home from '@/views/Home.vue';
 import data from '@/assets/data.json';
 
 const CMPS: any = {
+  '404': PageNotFound,
   'home': Home,
   'login': () => import('@/views/Login.vue'),
   'reset_pass': () => import('@/views/ResetPass.vue'),
@@ -13,6 +15,7 @@ const CMPS: any = {
 
 const routes = JSON.parse(JSON.stringify(data.routes));
 routes.unshift({ path: '/', name: 'home', component: 'home' });
+routes.push({ path: '/:catchAll(.*)', name: '404', component: '404' });
 routes.forEach((route: any) => route.component = CMPS[route.component]);
 
 export default createRouter({
