@@ -19,44 +19,60 @@ const dropdown: Ref<boolean> = ref(false);
 
 <template>
   <MDBNavbar light bg="light" container class="w-100">
-    <!-- logo -->
-    <MDBNavbarBrand href="#">
-      <RouterLink :to="{ name: 'home' }">
-        <Logo />
-      </RouterLink>
-    </MDBNavbarBrand>
-
-    <!-- toolbar menu -->
-    <MDBNavbarNav class="d-flex flex-row" right>
-      <!-- dropdown -->
-      <MDBNavbarItem class="d-none d-sm-block me-3">
-        <MDBDropdown v-model="dropdown">
-          <MDBDropdownToggle tag="span" class="nav-link" @click="dropdown = !dropdown">Dropdown</MDBDropdownToggle>
-          <MDBDropdownMenu>
-            <MDBDropdownItem v-for="route in data">
-              <RouterLink :to="route.path" class="dropdown-item">{{ route.name }}</RouterLink>
-            </MDBDropdownItem>
-          </MDBDropdownMenu>
-        </MDBDropdown>
-      </MDBNavbarItem>
-
-      <!-- hamburger tlacitko -->
-      <MDBNavbarItem to="#" class="d-sm-none me-3" data-bs-toggle="offcanvas" :data-bs-target="'#' + sideSelector">
-        <MDBIcon icon="bars"></MDBIcon>
-      </MDBNavbarItem>
-
-      <!-- login -->
-      <MDBNavbarItem :to="{ name: 'login' }" class="me-3">
-        <MDBIcon icon="user"></MDBIcon>
-      </MDBNavbarItem>
-
-      <MDBNavbarItem class="me-2">
-        <FlagMenu />
-      </MDBNavbarItem>
-    </MDBNavbarNav>
-
     <!-- sidebar menu -->
-    <SideMenu :id="sideSelector" :data="data" />
+    <SideMenu :id="sideSelector">
+      <template v-slot:header>
+        <RouterLink :to="{ name: 'home' }">
+          <Logo />
+        </RouterLink>
+      </template>
+
+      <template v-slot:body>
+        <ul class="navbar-nav">
+          <li v-for="route in data" class="nav-item">
+            <RouterLink :to="route.path" class="nav-link">{{ route.name }}</RouterLink>
+          </li>
+        </ul>
+      </template>
+
+      <template v-slot:content>
+        <!-- logo -->
+        <MDBNavbarBrand href="#">
+          <RouterLink :to="{ name: 'home' }">
+            <Logo />
+          </RouterLink>
+        </MDBNavbarBrand>
+
+        <!-- toolbar menu -->
+        <MDBNavbarNav class="d-flex flex-row" right>
+          <!-- dropdown -->
+          <MDBNavbarItem class="d-none d-sm-block me-3">
+            <MDBDropdown v-model="dropdown">
+              <MDBDropdownToggle tag="span" class="nav-link" @click="dropdown = !dropdown">Dropdown</MDBDropdownToggle>
+              <MDBDropdownMenu>
+                <MDBDropdownItem v-for="route in data">
+                  <RouterLink :to="route.path" class="dropdown-item">{{ route.name }}</RouterLink>
+                </MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
+          </MDBNavbarItem>
+
+          <!-- hamburger tlacitko -->
+          <MDBNavbarItem to="#" class="d-sm-none me-3" data-bs-toggle="offcanvas" :data-bs-target="'#' + sideSelector">
+            <MDBIcon icon="bars"></MDBIcon>
+          </MDBNavbarItem>
+
+          <!-- login -->
+          <MDBNavbarItem :to="{ name: 'login' }" class="me-3">
+            <MDBIcon icon="user"></MDBIcon>
+          </MDBNavbarItem>
+
+          <MDBNavbarItem class="me-2">
+            <FlagMenu />
+          </MDBNavbarItem>
+        </MDBNavbarNav>
+      </template>
+    </SideMenu>
   </MDBNavbar>
 </template>
 
