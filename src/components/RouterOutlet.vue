@@ -7,7 +7,7 @@ const hide = (e: any) => e.classList.add('hidden')
 
 <template>
     <RouterView v-slot="{ Component }">
-        <transition name="fade" @before-leave="hide">
+        <transition name="fade" appear @before-leave="hide">
             <component :is="Component" />
         </transition>
     </RouterView>

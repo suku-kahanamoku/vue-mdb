@@ -23,7 +23,7 @@ const props = defineProps<{
     <div class="offcanvas-body">
       <ul class="navbar-nav">
         <li v-for="route in data" class="nav-item">
-          <RouterLink :to="{ name: route.name }" class="nav-link">{{ route.name }}</RouterLink>
+          <RouterLink :to="route.path" class="nav-link">{{ route.name }}</RouterLink>
         </li>
       </ul>
     </div>
