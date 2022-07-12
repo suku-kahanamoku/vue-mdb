@@ -1,8 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref, type Ref } from 'vue';
+import offcanvas from "bootstrap/js/src/offcanvas";
 
 import RouterOutlet from '@/components/RouterOutlet.vue';
+import AdminMenu from '@/components/menu/AdminMenu.vue';
 </script>
 <template>
-  <RouterOutlet />
+  <AdminMenu>
+    <RouterOutlet />
+  </AdminMenu>
 </template>
+
+<style scoped>
+</style>

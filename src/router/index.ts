@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import PageNotFound from '@/views/system/404.vue';
+import Home from '@/views/system/Home.vue';
 import data from '@/assets/data.json';
 
 const CMPS: any = {
-  '404': import('@/views/system/404.vue'),
-  'home': import('@/views/system/Home.vue'),
+  '404': PageNotFound,
+  'home': Home,
   'login': () => import('@/views/system/Login.vue'),
   'reset_pass': () => import('@/views/system/ResetPass.vue'),
   'signup': () => import('@/views/system/Signup.vue'),
