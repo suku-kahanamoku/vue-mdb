@@ -4,10 +4,10 @@ import { RouterLink } from 'vue-router';
 import {
   MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
 } from 'mdb-vue-ui-kit';
-import Vue3RouterTree from 'vue3-router-tree';
 
 import Logo from '@/components/img/Logo.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
+import TreeMenu from './TreeMenu.vue';
 
 defineProps<{
   data?: any[]
@@ -64,23 +64,11 @@ const dropdown = ref(false);
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <div class="demo">
-          <vue3-router-tree :items="data">
-            <template #item="{ item }">
-              <div class="flex items-center w-100">
-                <MDBIcon icon="home"></MDBIcon>
-                <RouterLink :to="item?.path" class="nav-link w-100">{{ item?.name }}</RouterLink>
-              </div>
-            </template>
-          </vue3-router-tree>
-        </div>
+        <TreeMenu :data="data"></TreeMenu>
       </div>
     </div>
   </MDBNavbar>
 </template>
 
 <style scoped>
-.offcanvas-body {
-  padding: 0;
-}
 </style>
