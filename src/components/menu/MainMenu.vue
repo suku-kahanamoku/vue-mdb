@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
-import { RouterView, useRoute } from 'vue-router';
 import {
   MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
 } from 'mdb-vue-ui-kit';
@@ -8,8 +7,9 @@ import {
 import Logo from '@/components/img/Logo.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
 import TreeMenu from './TreeMenu.vue';
+import PzMenu from './PzMenu.vue';
 
-defineProps<{
+const props = defineProps<{
   data?: any[]
 }>();
 
@@ -20,7 +20,7 @@ const dropdown: Ref<boolean> = ref(false);
 <template>
   <MDBNavbar light bg="light" container class="w-100">
     <!-- logo -->
-    <MDBNavbarBrand href="#">
+    <MDBNavbarBrand role="button">
       <RouterLink to="/">
         <Logo />
       </RouterLink>
@@ -41,18 +41,19 @@ const dropdown: Ref<boolean> = ref(false);
       </MDBNavbarItem>
 
       <!-- login -->
-      <MDBNavbarItem to="/login" class="me-3">
-        <MDBIcon icon="user" />
-      </MDBNavbarItem>
+      <div class="me-3 nav-link">
+        <PzMenu :data="data" />
+      </div>
 
-      <MDBNavbarItem class="me-3">
+      <div class="me-3">
         <FlagMenu />
-      </MDBNavbarItem>
+      </div>
 
       <!-- hamburger tlacitko -->
-      <MDBNavbarItem to="#" class="d-sm-none me-2" data-bs-toggle="offcanvas" :data-bs-target="'#' + sideSelector">
+      <div to="#" class="nav-link d-sm-none me-2" data-bs-toggle="offcanvas" :data-bs-target="`#${sideSelector}`"
+        role="button">
         <MDBIcon icon="bars" />
-      </MDBNavbarItem>
+      </div>
     </MDBNavbarNav>
 
     <!-- sidebar menu -->

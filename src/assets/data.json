@@ -2,39 +2,48 @@
     "routes": [
         {
             "path": "/",
-            "name": "home"
+            "name": "home",
+            "icon": "home"
         },
         {
             "path": "/login",
-            "name": "login"
+            "name": "login",
+            "icon": "user"
         },
         {
             "path": "/reset-password",
-            "name": "reset_pass"
+            "name": "reset_pass",
+            "icon": "key"
         },
         {
             "path": "/signup",
-            "name": "signup"
+            "name": "signup",
+            "icon": "user-plus"
         },
         {
             "path": "/admin",
             "name": "admin",
+            "icon": "gears",
             "children": [
                 {
                     "path": "",
-                    "redirect": "/admin/dashboard"
+                    "redirect": "/admin/dashboard",
+                    "visible": false
                 },
                 {
                     "path": "dashboard",
-                    "name": "dashboard"
+                    "name": "dashboard",
+                    "icon": "chart-line"
                 },
                 {
                     "path": "profile",
-                    "name": "profile"
+                    "name": "profile",
+                    "icon": "address-card"
                 },
                 {
                     "path": "profile/:id",
-                    "name": "profile_detail"
+                    "name": "profile_detail",
+                    "visible": false
                 }
             ]
         }
