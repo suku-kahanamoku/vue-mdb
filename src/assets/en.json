@@ -1,8 +1,16 @@
 {
-    "signin": "Sign in",
-    "signup": "Sign up",
     "reset_pass": "Forgot password?",
     "not_account": "Don't have an account?",
+    "route": {
+        "home": "Home",
+        "login": "Sign in",
+        "signup": "Sign up",
+        "reset_pass": "Forgot password",
+        "admin": "Admin",
+        "dashboard": "Dashboard",
+        "profile": "Profile",
+        "profile_detail": "Profile detail"
+    },
     "btn": {
         "login": "Login",
         "google_login": "Sign in with google",

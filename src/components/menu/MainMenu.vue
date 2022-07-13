@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { ref, type Ref } from 'vue';
+import { RouterView, useRoute } from 'vue-router';
 import {
   MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
 } from 'mdb-vue-ui-kit';
@@ -13,8 +13,8 @@ defineProps<{
   data?: any[]
 }>();
 
-const sideSelector = 'sidenav';
-const dropdown = ref(false);
+const sideSelector: string = 'sidenav';
+const dropdown: Ref<boolean> = ref(false);
 </script>
 
 <template>
@@ -40,18 +40,18 @@ const dropdown = ref(false);
         </MDBDropdown>
       </MDBNavbarItem>
 
-      <!-- hamburger tlacitko -->
-      <MDBNavbarItem to="#" class="d-sm-none me-3" data-bs-toggle="offcanvas" :data-bs-target="'#' + sideSelector">
-        <MDBIcon icon="bars"></MDBIcon>
-      </MDBNavbarItem>
-
       <!-- login -->
       <MDBNavbarItem to="/login" class="me-3">
-        <MDBIcon icon="user"></MDBIcon>
+        <MDBIcon icon="user" />
       </MDBNavbarItem>
 
-      <MDBNavbarItem class="me-2">
+      <MDBNavbarItem class="me-3">
         <FlagMenu />
+      </MDBNavbarItem>
+
+      <!-- hamburger tlacitko -->
+      <MDBNavbarItem to="#" class="d-sm-none me-2" data-bs-toggle="offcanvas" :data-bs-target="'#' + sideSelector">
+        <MDBIcon icon="bars" />
       </MDBNavbarItem>
     </MDBNavbarNav>
 

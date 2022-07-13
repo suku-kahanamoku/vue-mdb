@@ -6,9 +6,8 @@ import RouterOutlet from '@/components/RouterOutlet.vue';
 import AdminMenu from '@/components/menu/AdminMenu.vue';
 </script>
 <template>
-  <AdminMenu>
-    <RouterOutlet />
-  </AdminMenu>
+  <AdminMenu />
+  <RouterOutlet />
 </template>
 
 <style scoped>

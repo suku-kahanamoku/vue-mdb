@@ -18,7 +18,7 @@ const checkForm = (e: any) => {
 <template>
     <MDBCard class="p-4 text-center" shadow="5">
         <MDBCardBody>
-            <MDBCardTitle class="mb-5 text-uppercase">{{ $t('signin') }}</MDBCardTitle>
+            <MDBCardTitle class="mb-5 text-uppercase">{{ $t('route.login') }}</MDBCardTitle>
 
             <form novalidate @submit.prevent="checkForm">
                 <MDBCardText>
@@ -26,11 +26,9 @@ const checkForm = (e: any) => {
                     <RouterLink :to="{ name: 'reset_pass' }" class="text-black-50">{{ $t('reset_pass') }}</RouterLink>
                 </MDBCardText>
 
-                <MDBBtn type="submit" class="d-none d-sm-block btn btn-block" size="lg" color="primary">{{
-                        $t('btn.login')
-                }}</MDBBtn>
-
-                <MDBBtn type="submit" class="d-sm-none btn" size="lg" color="primary">{{ $t('btn.login') }}</MDBBtn>
+                <MDBBtn type="submit" class="btn btn-block" size="lg" color="primary">
+                    {{ $t('btn.login') }}
+                </MDBBtn>
             </form>
 
             <hr class="my-4">
@@ -59,7 +57,7 @@ const checkForm = (e: any) => {
 
             <!-- registrace -->
             <p class="mt-5 mb-0">{{ $t('not_account') }}
-                <RouterLink :to="{ name: 'signup' }" class="text-black-50 fw-bold">{{ $t('signup') }}</RouterLink>
+                <RouterLink :to="{ name: 'signup' }" class="text-black-50 fw-bold">{{ $t('route.signup') }}</RouterLink>
             </p>
         </MDBCardBody>
     </MDBCard>

@@ -1,8 +1,16 @@
 {
-    "signin": "Přihlášení",
     "reset_pass": "Zapomenuté heslo?",
     "not_account": "Nemáte účet?",
-    "signup": "Registrace",
+    "route": {
+        "home": "Home",
+        "login": "Přihlášení",
+        "signup": "Registrace",
+        "reset_pass": "Zapomenuté heslo",
+        "admin": "Administrace",
+        "dashboard": "Dashboard",
+        "profile": "Profil",
+        "profile_detail": "Profil detail"
+    },
     "btn": {
         "login": "Přihlásit",
         "google_login": "Přihlášení google účtem",

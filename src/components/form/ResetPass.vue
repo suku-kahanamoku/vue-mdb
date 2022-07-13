@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBIcon } from 'mdb-vue-ui-kit';
 
 import type { IForm } from '@/components/form/form.interface';
 import TextField from '@/components/form/field/TextField.vue';
@@ -18,7 +18,7 @@ const checkForm = (e: any) => {
 <template>
     <MDBCard class="p-4 text-center" shadow="5">
         <MDBCardBody>
-            <MDBCardTitle class="mb-5 text-uppercase">{{ $t('reset_pass') }}</MDBCardTitle>
+            <MDBCardTitle class="mb-5 text-uppercase">{{ $t('route.reset_pass') }}</MDBCardTitle>
 
             <form novalidate @submit.prevent="checkForm">
                 <MDBCardText>
@@ -27,7 +27,7 @@ const checkForm = (e: any) => {
 
                 <div class="d-flex justify-content-between">
                     <span class="d-flex align-items-center text-black-50">
-                        <i class="fa fa-chevron-left me-1"></i>
+                        <MDBIcon icon="angle-left" size="lg" class="me-1" />
                         <RouterLink :to="{ name: 'login' }" class="text-black-50">
                             {{ $t('btn.back_to_login') }}
                         </RouterLink>
