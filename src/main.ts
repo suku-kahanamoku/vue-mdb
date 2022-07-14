@@ -6,7 +6,7 @@ import i18n from '@/plugins/i18n';
 import router from '@/router';
 
 import 'mdb-vue-ui-kit/css/mdb.min.css';
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const app = createApp(App);
 

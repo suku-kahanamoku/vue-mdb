@@ -17,7 +17,7 @@ const CMPS: any = {
   'profile_detail': () => import('@/views/admin/Detail.vue'),
 };
 
-i18n.global.locale = location.pathname.split("/")[1] || "en";
+i18n.global.locale = location.pathname.split('/')[1] || 'en';
 
 const getAlias = (name: string) => {
   const translation = i18n.global.t(`route.${name}`);
@@ -30,9 +30,9 @@ function modifyRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
       route.path = getAlias(<string>route.name) || route.path;
       route.component = CMPS[<string>route.name];
     }
-    if (route.redirect && route.path !== '/') {
+    /* if (route.redirect && route.path !== '/') {
       route.redirect = `/${i18n.global.locale}/${route.redirect}`;
-    }
+    } */
     if (route.children?.length) {
       modifyRoutes(route.children);
     }
@@ -42,17 +42,17 @@ function modifyRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
 
 const neco = modifyRoutes([
   {
-    path: "/",
-    redirect: i18n.global.locale,
-  },
-  {
-    path: "/:locale",
-    children: JSON.parse(JSON.stringify(data.routes)),
-    component: RouterOutlet,
+    path: '/',
+    redirect: `/${i18n.global.locale}`,
   },
   {
     path: '/:catchAll(.*)',
     component: PageNotFound,
+  },
+  {
+    path: '/:locale',
+    children: JSON.parse(JSON.stringify(data.routes)),
+    component: RouterOutlet,
   }
 ])
 console.log(neco)

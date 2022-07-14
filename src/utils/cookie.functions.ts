@@ -49,10 +49,10 @@ export function GET_COOKIE(cname: string): any {
  * @return {*}  {*}
  */
 export function GET_COOKIES(): any {
-  const pairs = document.cookie.split(";");
+  const pairs = document.cookie.split(';');
   const cookies = {};
   for (let i = 0; i < pairs.length; i++) {
-    const pair = pairs[i].split("=");
+    const pair = pairs[i].split('=');
     /* cookies[(pair[0] + '').trim()] = unescape(pair.slice(1).join('=')); */
   }
   return cookies;

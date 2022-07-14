@@ -2,6 +2,7 @@
     "reset_pass": "Zapomenuté heslo?",
     "not_account": "Nemáte účet?",
     "route": {
+        "home": "Home",
         "login": "Přihlášení",
         "signup": "Registrace",
         "reset_pass": "Zapomenuté heslo",

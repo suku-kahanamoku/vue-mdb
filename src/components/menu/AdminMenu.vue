@@ -14,7 +14,7 @@ defineProps<{
 
 const sidenav = ref();
 const sidenavEl = ref();
-const xs = window.matchMedia("only screen and (max-width: 575.98px)");
+const xs = window.matchMedia('only screen and (max-width: 575.98px)');
 
 xs.onchange = (e: any) => toggle(e.matches)
 

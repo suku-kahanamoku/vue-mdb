@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { RouterView } from 'vue-router';
 
-const hide = (e: any) => e.classList.add('hidden')
+const hide = (e: any) => e.classList.add('d-none')
 </script>
 
 <template>
@@ -14,10 +14,6 @@ const hide = (e: any) => e.classList.add('hidden')
 </template>
 
 <style scoped>
-.hidden {
-    display: none;
-}
-
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.5s ease-in;

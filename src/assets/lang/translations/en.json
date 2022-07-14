@@ -2,6 +2,7 @@
     "reset_pass": "Forgot password?",
     "not_account": "Don't have an account?",
     "route": {
+        "home": "Home",
         "login": "Sign in",
         "signup": "Sign up",
         "reset_pass": "Forgot password",
