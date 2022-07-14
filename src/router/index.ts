@@ -30,9 +30,6 @@ function modifyRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
       route.path = getAlias(<string>route.name) || route.path;
       route.component = CMPS[<string>route.name];
     }
-    /* if (route.redirect && route.path !== '/') {
-      route.redirect = `/${i18n.global.locale}/${route.redirect}`;
-    } */
     if (route.children?.length) {
       modifyRoutes(route.children);
     }
@@ -51,8 +48,8 @@ const neco = modifyRoutes([
   },
   {
     path: '/:locale',
-    children: JSON.parse(JSON.stringify(data.routes)),
     component: RouterOutlet,
+    children: JSON.parse(JSON.stringify(data.routes)),
   }
 ])
 console.log(neco)

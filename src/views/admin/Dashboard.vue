@@ -5,7 +5,7 @@ import {
 } from 'mdb-vue-ui-kit';
 </script>
 <template>
-  <main style="margin-top: 58px">
+  <div style="margin-top: 58px">
     <div class="container pt-4">
       <!-- Section: Main chart -->
       <section class="mb-4">
@@ -416,5 +416,5 @@ import {
       </section>
       <!--Section: Statistics with subtitles-->
     </div>
-  </main>
+  </div>
 </template>

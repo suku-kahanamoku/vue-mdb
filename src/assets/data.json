@@ -23,15 +23,11 @@
         {
             "path": "admin",
             "name": "admin",
+            "redirect": {
+                "name": "dashboard"
+            },
             "icon": "gears",
             "children": [
-                {
-                    "path": "",
-                    "redirect": {
-                        "name": "dashboard"
-                    },
-                    "visible": false
-                },
                 {
                     "path": "dashboard",
                     "name": "dashboard",

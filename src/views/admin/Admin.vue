@@ -6,8 +6,9 @@ import AdminMenu from '@/components/menu/AdminMenu.vue';
 </script>
 <template>
   <div>
-    <AdminMenu />
-    <RouterOutlet />
+    <AdminMenu>
+      <RouterOutlet />
+    </AdminMenu>
   </div>
 </template>
 
