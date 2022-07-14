@@ -6,10 +6,8 @@ import {
 
 import i18n from '@/plugins/i18n';
 import TreeMenu from '@/components/menu/TreeMenu.vue';
-import FlagMenu from '@/components/menu/FlagMenu.vue';
-import PzMenu from './PzMenu.vue';
 
-defineProps<{
+const props = defineProps<{
   data?: any[]
 }>();
 
@@ -44,10 +42,6 @@ const open: Ref<boolean> = ref(false);
       </template>
     </li>
   </ul>
-  <div class="d-flex align-items-center justify-content-between position-absolute bottom-0 w-100 start-0 px-4 py-2">
-    <PzMenu :data="data" />
-    <FlagMenu />
-  </div>
 </template>
 
 <style scoped>

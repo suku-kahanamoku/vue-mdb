@@ -6,6 +6,11 @@
             "icon": "home"
         },
         {
+            "path": "radar",
+            "name": "radar",
+            "icon": "satellite-dish"
+        },
+        {
             "path": "login",
             "name": "login",
             "icon": "user"

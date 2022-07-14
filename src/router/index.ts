@@ -8,6 +8,7 @@ import { REMOVE_DIACRITICS } from '@/utils/modify-string.functions';
 
 const CMPS: any = {
   'home': () => import('@/views/system/Home.vue'),
+  'radar': () => import('@/views/system/Radar.vue'),
   'login': () => import('@/views/system/Login.vue'),
   'reset_pass': () => import('@/views/system/ResetPass.vue'),
   'signup': () => import('@/views/system/Signup.vue'),
@@ -37,24 +38,21 @@ function modifyRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
   return routes;
 }
 
-const neco = modifyRoutes([
-  {
-    path: '/',
-    redirect: `/${i18n.global.locale}`,
-  },
-  {
-    path: '/:catchAll(.*)',
-    component: PageNotFound,
-  },
-  {
-    path: '/:locale',
-    component: RouterOutlet,
-    children: JSON.parse(JSON.stringify(data.routes)),
-  }
-])
-console.log(neco)
-
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: neco
+  routes: modifyRoutes([
+    {
+      path: '/',
+      redirect: `/${i18n.global.locale}`,
+    },
+    {
+      path: '/:catchAll(.*)',
+      component: PageNotFound,
+    },
+    {
+      path: '/:locale',
+      component: RouterOutlet,
+      children: JSON.parse(JSON.stringify(data.routes)),
+    }
+  ])
 });
