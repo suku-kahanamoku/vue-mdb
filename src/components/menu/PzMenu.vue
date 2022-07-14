@@ -18,7 +18,7 @@ const dropdown: Ref<boolean> = ref(false);
     </MDBDropdownToggle>
     <MDBDropdownMenu>
       <MDBDropdownItem v-for="route in data">
-        <RouterLink :to="route.path" class="dropdown-item">{{ route.name }}</RouterLink>
+        <RouterLink :to="{ name: route.name }" class="dropdown-item">{{ route.name }}</RouterLink>
       </MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>

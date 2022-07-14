@@ -1,33 +1,33 @@
 {
     "routes": [
         {
-            "path": "/",
+            "path": "",
             "name": "home",
             "icon": "home"
         },
         {
-            "path": "/login",
+            "path": "login",
             "name": "login",
             "icon": "user"
         },
         {
-            "path": "/reset-password",
+            "path": "reset-password",
             "name": "reset_pass",
             "icon": "key"
         },
         {
-            "path": "/signup",
+            "path": "signup",
             "name": "signup",
             "icon": "user-plus"
         },
         {
-            "path": "/admin",
+            "path": "admin",
             "name": "admin",
             "icon": "gears",
             "children": [
                 {
                     "path": "",
-                    "redirect": "/admin/dashboard",
+                    "redirect": "admin/dashboard",
                     "visible": false
                 },
                 {

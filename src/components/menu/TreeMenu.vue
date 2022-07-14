@@ -4,6 +4,7 @@ import {
   MDBIcon, MDBCollapse, MDBBtn
 } from 'mdb-vue-ui-kit';
 
+import i18n from '@/plugins/i18n';
 import TreeMenu from '@/components/menu/TreeMenu.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
 import PzMenu from './PzMenu.vue';
@@ -24,7 +25,9 @@ const open: Ref<boolean> = ref(false);
           <MDBBtn class="nav-item d-flex align-items-center justify-content-between w-100" color="link"
             @click="open = !open">
             <MDBIcon v-if="route.icon" :icon="route.icon" size="lg" class="pe-3" />
-            <RouterLink :to="route.path" class="nav-link w-100 text-start ">{{ $t(`route.${route.name}`) }}</RouterLink>
+            <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }"
+              class="nav-link w-100 text-start ">{{ $t(`route.${route.name}`) }}
+            </RouterLink>
             <MDBIcon :icon="open ? 'angle-up' : 'angle-right'" size="lg" />
           </MDBBtn>
           <MDBCollapse v-model="open" class="ms-3">
@@ -35,7 +38,8 @@ const open: Ref<boolean> = ref(false);
         <!-- bez potomku -->
         <MDBBtn v-else class="nav-item d-flex align-items-center justify-content-between w-100" color="link">
           <MDBIcon v-if="route.icon" :icon="route.icon" size="lg" class="pe-3" />
-          <RouterLink :to="route.path" class="nav-link w-100 text-start">{{ $t(`route.${route.name}`) }}</RouterLink>
+          <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }"
+            class="nav-link w-100 text-start">{{ $t(`route.${route.name}`) }}</RouterLink>
         </MDBBtn>
       </template>
     </li>

@@ -213,3 +213,25 @@ export function ADD_SLASHES(value: string): string {
     replace(/'/g, '\\\'').
     replace(/"/g, '\\"');
 }
+
+export function REMOVE_DIACRITICS(inputText: string) {
+  let r = inputText.toLowerCase();
+  r = r.replace(new RegExp(/\s/g), "-");
+  r = r.replace(new RegExp(/[àáâãäå]/g), "a");
+  r = r.replace(new RegExp(/[æ]/g), "ae");
+  r = r.replace(new RegExp(/[çč]/g), "c");
+  r = r.replace(new RegExp(/[ď]/g), "d");
+  r = r.replace(new RegExp(/[èéêëě]/g), "e");
+  r = r.replace(new RegExp(/[ìíîï]/g), "i");
+  r = r.replace(new RegExp(/[ĺľ]/g), "l");
+  r = r.replace(new RegExp(/[ñň]/g), "n");
+  r = r.replace(new RegExp(/[òóôõöő]/g), "o");
+  r = r.replace(new RegExp(/[œ]/g), "oe");
+  r = r.replace(new RegExp(/[řŕ]/g), "r");
+  r = r.replace(new RegExp(/[š]/g), "s");
+  r = r.replace(new RegExp(/[ť]/g), "t");
+  r = r.replace(new RegExp(/[ůùúûüúű]/g), "u");
+  r = r.replace(new RegExp(/[ýÿ]/g), "y");
+  r = r.replace(new RegExp(/[ž]/g), "z");
+  return r;
+}
