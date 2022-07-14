@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
+import { RouterLink, type RouteRecordRaw } from 'vue-router';
 import {
   MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
 } from 'mdb-vue-ui-kit';
@@ -10,11 +11,19 @@ import PzMenu from '@/components/menu/PzMenu.vue';
 import SideMenu from './SideMenu.vue';
 
 const props = defineProps<{
-  data?: any[]
+  data: RouteRecordRaw[]
 }>();
 
 const sideSelector: string = 'sidenav';
+const toolbarData: RouteRecordRaw[] = filter(props.data, ['radar']);
+
 const dropdown: Ref<boolean> = ref(false);
+
+function filter(data: RouteRecordRaw[], values: string[]): RouteRecordRaw[] {
+  return data?.filter(
+    (route: RouteRecordRaw) => ['radar'].indexOf(route?.name as string) >= 0
+  );
+}
 </script>
 
 <template>
@@ -34,7 +43,9 @@ const dropdown: Ref<boolean> = ref(false);
           <MDBDropdownToggle tag="span" class="nav-link" @click="dropdown = !dropdown">Dropdown</MDBDropdownToggle>
           <MDBDropdownMenu>
             <MDBDropdownItem v-for="route in data">
-              <RouterLink :to="{ name: route.name }" class="dropdown-item">{{ route.name }}</RouterLink>
+              <RouterLink :to="{ name: route.name }" class="dropdown-item">
+                {{ $t(`route.${route.name as string}`) }}
+              </RouterLink>
             </MDBDropdownItem>
           </MDBDropdownMenu>
         </MDBDropdown>

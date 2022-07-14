@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
-import {
-  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
-} from 'mdb-vue-ui-kit';
+import { RouterLink, type RouteRecordRaw } from 'vue-router';
 
 import Logo from '@/components/img/Logo.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
@@ -11,7 +9,7 @@ import PzMenu from '@/components/menu/PzMenu.vue';
 
 const props = defineProps<{
   id: string,
-  data?: any[]
+  data: RouteRecordRaw[]
 }>();
 </script>
 
@@ -24,7 +22,7 @@ const props = defineProps<{
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <TreeMenu :data="data"></TreeMenu>
+      <TreeMenu :data="data" />
     </div>
 
     <!-- footer -->

@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { RouterView } from 'vue-router';
 
-const hide = (e: any) => e.classList.add('d-none')
+const hide = (e: HTMLElement) => e.classList.add('d-none')
 </script>
 
 <template>

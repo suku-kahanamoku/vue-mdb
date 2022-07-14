@@ -3,6 +3,7 @@
     "not_account": "Nemáte účet?",
     "route": {
         "home": "",
+        "radar": "Radar",
         "login": "Přihlášení",
         "signup": "Registrace",
         "reset_pass": "Zapomenuté heslo",
@@ -22,7 +23,7 @@
         "email": "E-mail",
         "password": "Heslo",
         "repeat_pass": "Opakovat heslo",
-        "firstname": "Κřestní jméno",
+        "firstname": "Křestní jméno",
         "lastname": "Přijmení",
         "phone": "Telefon",
         "msg": {

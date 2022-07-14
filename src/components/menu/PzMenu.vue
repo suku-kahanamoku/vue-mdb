@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
+import { RouterLink, type RouteRecordRaw } from 'vue-router';
 import {
-  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
+  MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
 } from 'mdb-vue-ui-kit';
 
 const props = defineProps<{
-  data: any[] | any
+  data: RouteRecordRaw[] | RouteRecordRaw
 }>();
 
 const dropdown: Ref<boolean> = ref(false);
@@ -18,7 +19,9 @@ const dropdown: Ref<boolean> = ref(false);
     </MDBDropdownToggle>
     <MDBDropdownMenu>
       <MDBDropdownItem v-for="route in data">
-        <RouterLink :to="{ name: route.name }" class="dropdown-item">{{ route.name }}</RouterLink>
+        <RouterLink :to="{ name: route.name }" class="dropdown-item">
+          {{ $t(`route.${route.name as string}`) }}
+        </RouterLink>
       </MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>

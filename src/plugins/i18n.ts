@@ -3,7 +3,7 @@ import en from '@/assets/lang/translations/en.json';
 import cs from '@/assets/lang/translations/cs.json';
 
 export default createI18n({
-    locale: 'cs',
+    locale: 'en',
     fallbackLocale: 'en',
     messages: { en: en, cs: cs }
 });

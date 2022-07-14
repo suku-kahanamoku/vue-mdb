@@ -3,6 +3,7 @@
     "not_account": "Don't have an account?",
     "route": {
         "home": "",
+        "radar": "Radar",
         "login": "Sign in",
         "signup": "Sign up",
         "reset_pass": "Forgot password",
