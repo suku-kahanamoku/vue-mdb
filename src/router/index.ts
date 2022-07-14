@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 
-import RouterOutlet from '@/components/RouterOutlet.vue';
-import PageNotFound from '@/views/system/404.vue';
-import data from '@/assets/data.json';
 import i18n from '@/plugins/i18n';
+import RouterOutlet from '@/components/system/RouterOutlet.vue';
+import PageNotFound from '@/views/system/404.vue';
 import { REMOVE_DIACRITICS } from '@/utils/modify-string.functions';
+import data from '@/assets/data.json';
 
 const CMPS: any = {
   'home': () => import('@/views/system/Home.vue'),
