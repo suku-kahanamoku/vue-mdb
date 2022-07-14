@@ -5,10 +5,11 @@ import {
   MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
 } from 'mdb-vue-ui-kit';
 
+import i18n from '@/plugins/i18n';
 import Logo from '@/components/img/Logo.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
 import PzMenu from '@/components/menu/PzMenu.vue';
-import SideMenu from './SideMenu.vue';
+import SideMenu from '@/components/menu/SideMenu.vue';
 
 const props = defineProps<{
   data: RouteRecordRaw[]
@@ -17,15 +18,11 @@ const props = defineProps<{
 const sideSelector: string = 'sidenav';
 const toolbarData: RouteRecordRaw[] = filter(props.data, ['radar']);
 
-const dropdown: Ref<boolean> = ref(false);
-
 function filter(data: RouteRecordRaw[], values: string[]): RouteRecordRaw[] {
   return data?.filter(
-    (route: RouteRecordRaw) => ['radar'].indexOf(route?.name as string) >= 0
+    (route: RouteRecordRaw) => values.indexOf(route?.name as string) >= 0
   );
 }
-
-console.log(toolbarData)
 </script>
 
 <template>
@@ -39,18 +36,10 @@ console.log(toolbarData)
 
     <!-- toolbar menu -->
     <MDBNavbarNav class="d-flex flex-row" right>
-      <!-- dropdown -->
-      <MDBNavbarItem class="d-none d-sm-block me-3">
-        <MDBDropdown v-model="dropdown">
-          <MDBDropdownToggle tag="span" class="nav-link" @click="dropdown = !dropdown">Dropdown</MDBDropdownToggle>
-          <MDBDropdownMenu>
-            <MDBDropdownItem v-for="route in data">
-              <RouterLink :to="{ name: route.name }" class="dropdown-item">
-                {{ $t(`route.${route.name as string}`) }}
-              </RouterLink>
-            </MDBDropdownItem>
-          </MDBDropdownMenu>
-        </MDBDropdown>
+      <!-- menu item -->
+      <MDBNavbarItem v-for="route in toolbarData" class="d-none d-sm-block me-3"
+        :to="{ name: route.name, params: { locale: i18n.global.locale } }">
+        {{ $t(`route.${route.name as string}`) }}
       </MDBNavbarItem>
 
       <!-- login -->
@@ -58,11 +47,12 @@ console.log(toolbarData)
         <PzMenu :data="data" />
       </div>
 
+      <!-- lang -->
       <div class="me-3">
         <FlagMenu />
       </div>
 
-      <!-- hamburger tlacitko -->
+      <!-- hamburger btn -->
       <div to="#" class="nav-link d-sm-none me-2" data-bs-toggle="offcanvas" :data-bs-target="`#${sideSelector}`"
         role="button">
         <MDBIcon icon="bars" />

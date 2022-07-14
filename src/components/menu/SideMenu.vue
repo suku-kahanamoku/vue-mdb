@@ -15,12 +15,15 @@ const props = defineProps<{
 
 <template>
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" :id="id">
+    <!-- header -->
     <div class="offcanvas-header">
       <RouterLink to="/">
         <Logo />
       </RouterLink>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+
+    <!-- body, menu items -->
     <div class="offcanvas-body">
       <TreeMenu :data="data" />
     </div>

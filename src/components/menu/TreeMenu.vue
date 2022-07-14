@@ -19,25 +19,36 @@ const open: Ref<boolean> = ref(false);
   <ul class="navbar-nav">
     <li v-for="route in data">
       <template v-if="route?.meta?.visible !== false">
-        <!-- s potomkami -->
+        <!-- with children -->
         <template v-if="route.children?.length">
+          <!-- nav btn, collapse text -->
           <MDBBtn class="nav-item d-flex align-items-center justify-content-between w-100" color="link"
             @click="open = !open">
+            <!-- before icon -->
             <MDBIcon v-if="route?.meta?.icon" :icon="route?.meta?.icon" size="lg" class="pe-3" />
+
+            <!-- nav link -->
             <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }"
               class="nav-link w-100 text-start ">
               {{ $t(`route.${route.name as string}`) }}
             </RouterLink>
+
+            <!-- after icon -->
             <MDBIcon :icon="open ? 'angle-up' : 'angle-right'" size="lg" />
           </MDBBtn>
+
+          <!-- collapse body -->
           <MDBCollapse v-model="open" class="ms-3">
             <TreeMenu :data="route.children" />
           </MDBCollapse>
         </template>
 
-        <!-- bez potomku -->
+        <!-- without children -->
         <MDBBtn v-else class="nav-item d-flex align-items-center justify-content-between w-100" color="link">
+          <!-- before icon -->
           <MDBIcon v-if="route?.meta?.icon" :icon="route?.meta?.icon" size="lg" class="pe-3" />
+
+          <!-- nav link -->
           <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }"
             class="nav-link w-100 text-start">
             {{ $t(`route.${route.name as string}`) }}

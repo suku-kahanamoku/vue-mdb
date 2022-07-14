@@ -7,7 +7,7 @@ import CountryFlag from 'vue-country-flag-next';
 
 import i18n from '@/plugins/i18n';
 
-const dropdown: Ref<boolean> = ref(false);
+const open: Ref<boolean> = ref(false);
 const selected: Ref<{ flag: string, lang: string, title: string } | undefined> = ref();
 const languages = [
   { flag: 'gb', lang: 'en', title: 'English' },
@@ -28,8 +28,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <MDBDropdown v-if="selected" v-model="dropdown">
-    <MDBDropdownToggle tag="span" @click="dropdown = !dropdown" class="hidden-arrow">
+  <MDBDropdown v-if="selected" v-model="open">
+    <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow">
       <CountryFlag :country="selected.flag" />
     </MDBDropdownToggle>
     <MDBDropdownMenu>
