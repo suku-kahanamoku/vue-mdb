@@ -9,7 +9,8 @@ import PzMenu from '@/components/menu/PzMenu.vue';
 
 const props = defineProps<{
   id: string,
-  data: RouteRecordRaw[]
+  data: RouteRecordRaw[],
+  pzData: RouteRecordRaw[],
 }>();
 </script>
 
@@ -30,7 +31,7 @@ const props = defineProps<{
 
     <!-- footer -->
     <div class="d-flex align-items-center justify-content-between position-absolute bottom-0 w-100 start-0 px-4 py-2">
-      <PzMenu :data="data" />
+      <PzMenu :data="pzData" />
       <FlagMenu />
     </div>
   </div>

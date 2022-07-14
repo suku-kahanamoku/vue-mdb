@@ -2,7 +2,7 @@
 import { ref, type Ref } from 'vue';
 import { RouterLink, type RouteRecordRaw } from 'vue-router';
 import {
-  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
+  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarItem
 } from 'mdb-vue-ui-kit';
 
 import i18n from '@/plugins/i18n';
@@ -10,19 +10,19 @@ import Logo from '@/components/img/Logo.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
 import PzMenu from '@/components/menu/PzMenu.vue';
 import SideMenu from '@/components/menu/SideMenu.vue';
+import { FLAT_ROUTES, FILTER_ROUTES } from '@/utils/route.functions';
 
 const props = defineProps<{
   data: RouteRecordRaw[]
 }>();
 
 const sideSelector: string = 'sidenav';
-const toolbarData: RouteRecordRaw[] = filter(props.data, ['radar']);
-
-function filter(data: RouteRecordRaw[], values: string[]): RouteRecordRaw[] {
-  return data?.filter(
-    (route: RouteRecordRaw) => values.indexOf(route?.name as string) >= 0
-  );
-}
+const isLogged: Ref<boolean> = ref(false);
+const toolbarData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['radar']);
+const sidenavData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['home', 'login', 'signup', 'reset_pass'], true);
+const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
+  Object.values(FLAT_ROUTES(props.data)), isLogged.value ? ['profile', 'logout'] : ['login']
+);
 </script>
 
 <template>
@@ -44,7 +44,7 @@ function filter(data: RouteRecordRaw[], values: string[]): RouteRecordRaw[] {
 
       <!-- login -->
       <div class="me-3 nav-link">
-        <PzMenu :data="data" />
+        <PzMenu :data="pzData" />
       </div>
 
       <!-- lang -->
@@ -60,7 +60,7 @@ function filter(data: RouteRecordRaw[], values: string[]): RouteRecordRaw[] {
     </MDBNavbarNav>
 
     <!-- sidebar menu -->
-    <SideMenu :id="sideSelector" :data="data" />
+    <SideMenu :id="sideSelector" :data="sidenavData" :pz-data="pzData" />
   </MDBNavbar>
 </template>
 

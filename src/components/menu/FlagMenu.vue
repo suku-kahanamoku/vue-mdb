@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, type Ref } from 'vue';
 import {
-  MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+  MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBBtn
 } from 'mdb-vue-ui-kit';
 import CountryFlag from 'vue-country-flag-next';
 
@@ -34,9 +34,9 @@ onMounted(() => {
     </MDBDropdownToggle>
     <MDBDropdownMenu>
       <template v-for="item in languages">
-        <MDBDropdownItem v-if="selected.lang !== item.lang" tag="button" @click="changeLocale(item.lang)">
+        <MDBBtn v-if="selected.lang !== item.lang" color="link" class="m-0 p-0" @click="changeLocale(item.lang)">
           <CountryFlag :country="item.flag" />
-        </MDBDropdownItem>
+        </MDBBtn>
       </template>
     </MDBDropdownMenu>
   </MDBDropdown>
@@ -45,5 +45,21 @@ onMounted(() => {
 <style scoped>
 .dropdown-menu {
   min-width: auto;
+}
+
+.flag {
+  border-radius: 10px;
+}
+
+.dropdown-menu,
+.btn-link:hover {
+  background-color: transparent;
+}
+
+.dropdown-menu .flag {
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 7%), 0 2px 4px rgb(0 0 0 / 5%);
+  margin-left: -12px;
+  margin-right: -12px;
+  margin-bottom: -14px;
 }
 </style>

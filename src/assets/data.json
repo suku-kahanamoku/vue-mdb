@@ -22,17 +22,17 @@
             }
         },
         {
-            "path": "reset-password",
-            "name": "reset_pass",
-            "meta": {
-                "icon": "key"
-            }
-        },
-        {
             "path": "signup",
             "name": "signup",
             "meta": {
                 "icon": "user-plus"
+            }
+        },
+        {
+            "path": "reset-password",
+            "name": "reset_pass",
+            "meta": {
+                "icon": "key"
             }
         },
         {

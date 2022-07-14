@@ -8,14 +8,14 @@ import {
 import i18n from '@/plugins/i18n';
 
 const props = defineProps<{
-  data: RouteRecordRaw[] | RouteRecordRaw
+  data: RouteRecordRaw[]
 }>();
 
 const open: Ref<boolean> = ref(false);
 </script>
 
 <template>
-  <MDBDropdown v-if="Array.isArray(data)" v-model="open">
+  <MDBDropdown v-if="data.length > 1" v-model="open">
     <!-- toggle -->
     <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow">
       <MDBIcon icon="user" />
@@ -32,8 +32,8 @@ const open: Ref<boolean> = ref(false);
     </MDBDropdownMenu>
   </MDBDropdown>
 
-  <RouterLink v-else :to="data.path">
-    <MDBIcon icon="user" />
+  <RouterLink v-else-if="data.length" :to="{ name: data[0].name, params: { locale: i18n.global.locale } }">
+    <MDBIcon :icon="data[0]?.meta?.icon" />
   </RouterLink>
 </template>
 
