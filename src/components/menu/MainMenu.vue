@@ -24,6 +24,8 @@ function filter(data: RouteRecordRaw[], values: string[]): RouteRecordRaw[] {
     (route: RouteRecordRaw) => ['radar'].indexOf(route?.name as string) >= 0
   );
 }
+
+console.log(toolbarData)
 </script>
 
 <template>
