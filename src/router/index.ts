@@ -27,9 +27,11 @@ export default createRouter({
       }
     ],
     {
-      'home': () => import('@/views/system/Home.vue'),
-      'radar': () => import('@/views/system/Radar.vue'),
+      'home': () => import('@/views/web/Home.vue'),
+      'radar': () => import('@/views/web/Radar.vue'),
+      'contact': () => import('@/views/web/Contact.vue'),
       'login': () => import('@/views/system/Login.vue'),
+      'logout': () => import('@/views/system/Logout.vue'),
       'reset_pass': () => import('@/views/system/ResetPass.vue'),
       'signup': () => import('@/views/system/Signup.vue'),
       'admin': () => import('@/views/admin/Admin.vue'),

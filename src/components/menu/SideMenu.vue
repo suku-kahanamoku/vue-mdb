@@ -12,26 +12,30 @@ const props = defineProps<{
   data: RouteRecordRaw[],
   pzData: RouteRecordRaw[],
 }>();
+
+function closeSidenav() {
+  document.getElementById('btn-close')?.click();
+}
 </script>
 
 <template>
-  <div class="offcanvas offcanvas-start" data-bs-scroll="true" :id="id">
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" :id="id">
     <!-- header -->
     <div class="offcanvas-header">
       <RouterLink to="/">
         <Logo />
       </RouterLink>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button type="button" id="btn-close" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
     <!-- body, menu items -->
     <div class="offcanvas-body">
-      <TreeMenu :data="data" />
+      <TreeMenu :data="data" :closeFnc="closeSidenav" />
     </div>
 
     <!-- footer -->
     <div class="d-flex align-items-center justify-content-between position-absolute bottom-0 w-100 start-0 px-4 py-2">
-      <PzMenu :data="pzData" />
+      <PzMenu :data="pzData" :closeFnc="closeSidenav" />
       <FlagMenu />
     </div>
   </div>

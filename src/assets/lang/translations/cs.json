@@ -1,10 +1,13 @@
 {
     "reset_pass": "Zapomenuté heslo?",
     "not_account": "Nemáte účet?",
+    "success_logout": "Odhlášení ze systému proběhlo úspěšně.",
     "route": {
         "home": "",
         "radar": "Radar",
+        "contact": "Kontakt",
         "login": "Přihlášení",
+        "logout": "Odhlášení",
         "signup": "Registrace",
         "reset_pass": "Zapomenuté heslo",
         "admin": "Administrace",

@@ -2,7 +2,7 @@
 import { ref, type Ref } from 'vue';
 import { RouterLink, type RouteRecordRaw } from 'vue-router';
 import {
-  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarItem
+  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarItem, MDBTooltip
 } from 'mdb-vue-ui-kit';
 
 import i18n from '@/plugins/i18n';
@@ -18,11 +18,13 @@ const props = defineProps<{
 
 const sideSelector: string = 'sidenav';
 const isLogged: Ref<boolean> = ref(false);
-const toolbarData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['radar']);
-const sidenavData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['home', 'login', 'signup', 'reset_pass'], true);
+const toolbarData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['radar', 'contact']);
+const sidenavData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['home', 'login', 'logout', 'signup', 'reset_pass'], true);
 const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
   Object.values(FLAT_ROUTES(props.data)), isLogged.value ? ['profile', 'logout'] : ['login']
 );
+
+const tooltip = ref(false);
 </script>
 
 <template>
@@ -37,10 +39,11 @@ const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
     <!-- toolbar menu -->
     <MDBNavbarNav class="d-flex flex-row" right>
       <!-- menu item -->
-      <MDBNavbarItem v-for="route in toolbarData" class="d-none d-sm-block me-3"
-        :to="{ name: route.name, params: { locale: i18n.global.locale } }">
-        {{ $t(`route.${route.name as string}`) }}
-      </MDBNavbarItem>
+      <div v-for="route in toolbarData" class="nav-link d-none d-sm-block me-3">
+        <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }">
+          <MDBIcon :icon="route.meta?.icon" />
+        </RouterLink>
+      </div>
 
       <!-- login -->
       <div class="me-3 nav-link">

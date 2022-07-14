@@ -1,10 +1,13 @@
 {
     "reset_pass": "Forgot password?",
     "not_account": "Don't have an account?",
+    "success_logout": "You have successfully logged out of the system.",
     "route": {
         "home": "",
         "radar": "Radar",
+        "contact": "Contact",
         "login": "Sign in",
+        "logout": "Log out",
         "signup": "Sign up",
         "reset_pass": "Forgot password",
         "admin": "Admin",

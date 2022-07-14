@@ -15,24 +15,10 @@
             }
         },
         {
-            "path": "login",
-            "name": "login",
+            "path": "contact",
+            "name": "contact",
             "meta": {
-                "icon": "user"
-            }
-        },
-        {
-            "path": "signup",
-            "name": "signup",
-            "meta": {
-                "icon": "user-plus"
-            }
-        },
-        {
-            "path": "reset-password",
-            "name": "reset_pass",
-            "meta": {
-                "icon": "key"
+                "icon": "envelope-open-text"
             }
         },
         {
@@ -67,6 +53,34 @@
                     }
                 }
             ]
+        },
+        {
+            "path": "login",
+            "name": "login",
+            "meta": {
+                "icon": "user-tie"
+            }
+        },
+        {
+            "path": "signup",
+            "name": "signup",
+            "meta": {
+                "icon": "user-plus"
+            }
+        },
+        {
+            "path": "reset-password",
+            "name": "reset_pass",
+            "meta": {
+                "icon": "key"
+            }
+        },
+        {
+            "path": "logout",
+            "name": "logout",
+            "meta": {
+                "icon": "right-from-bracket"
+            }
         }
     ]
 }

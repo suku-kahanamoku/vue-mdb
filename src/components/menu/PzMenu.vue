@@ -8,7 +8,8 @@ import {
 import i18n from '@/plugins/i18n';
 
 const props = defineProps<{
-  data: RouteRecordRaw[]
+  data: RouteRecordRaw[],
+  closeFnc?: Function
 }>();
 
 const open: Ref<boolean> = ref(false);
@@ -25,14 +26,16 @@ const open: Ref<boolean> = ref(false);
     <MDBDropdownMenu>
       <MDBDropdownItem v-for="route in data">
         <!-- nav link -->
-        <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }" class="dropdown-item">
+        <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }" class="dropdown-item"
+          @click="closeFnc && closeFnc()">
           {{ $t(`route.${route.name as string}`) }}
         </RouterLink>
       </MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>
 
-  <RouterLink v-else-if="data.length" :to="{ name: data[0].name, params: { locale: i18n.global.locale } }">
+  <RouterLink v-else-if="data.length" :to="{ name: data[0].name, params: { locale: i18n.global.locale } }"
+    @click="closeFnc && closeFnc()">
     <MDBIcon :icon="data[0]?.meta?.icon" />
   </RouterLink>
 </template>

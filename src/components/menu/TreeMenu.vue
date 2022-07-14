@@ -9,10 +9,15 @@ import i18n from '@/plugins/i18n';
 import TreeMenu from '@/components/menu/TreeMenu.vue';
 
 const props = defineProps<{
-  data: RouteRecordRaw[]
+  data: RouteRecordRaw[],
+  closeFnc?: Function
 }>();
 
 const open: Ref<boolean> = ref(false);
+
+function closeSidenav() {
+  document.getElementById('btn-close')?.click();
+}
 </script>
 
 <template>
@@ -39,7 +44,7 @@ const open: Ref<boolean> = ref(false);
 
           <!-- collapse body -->
           <MDBCollapse v-model="open" class="ms-3">
-            <TreeMenu :data="route.children" />
+            <TreeMenu :data="route.children" :closeFnc="closeFnc" />
           </MDBCollapse>
         </template>
 
@@ -50,7 +55,7 @@ const open: Ref<boolean> = ref(false);
 
           <!-- nav link -->
           <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }"
-            class="nav-link w-100 text-start">
+            class="nav-link w-100 text-start" @click="closeFnc && closeFnc()">
             {{ $t(`route.${route.name as string}`) }}
           </RouterLink>
         </MDBBtn>
