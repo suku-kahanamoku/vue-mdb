@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBIcon } from 'mdb-vue-ui-kit';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
 
 import type { IForm } from '@/components/form/form.interface';
 import TextField from '@/components/form/field/TextField.vue';
+import RouterOutletLink from '@/components/system/RouterOutletLink.vue';
 
 const props = defineProps<{
     config: IForm
@@ -13,6 +13,8 @@ const props = defineProps<{
 const checkForm = (e: any) => {
     e.target.classList.add('was-validated');
 };
+
+const backRoute = <any>{ name: 'login', meta: { icon: 'angle-left' } }
 </script>
 
 <template>
@@ -26,12 +28,7 @@ const checkForm = (e: any) => {
                 </MDBCardText>
 
                 <div class="d-flex justify-content-between">
-                    <span class="d-flex align-items-center text-black-50">
-                        <MDBIcon icon="angle-left" size="lg" class="me-1" />
-                        <RouterLink :to="{ name: 'login' }" class="text-black-50">
-                            {{ $t('btn.back_to_login') }}
-                        </RouterLink>
-                    </span>
+                    <RouterOutletLink :route="backRoute" label="btn.back_to_login" class="text-black-50" />
                     <MDBBtn type="submit" color="primary">{{ $t('btn.send') }}</MDBBtn>
                 </div>
             </form>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
 
 import type { IForm } from '@/components/form/form.interface';
 import TextField from '@/components/form/field/TextField.vue';
+import RouterOutletLink from '@/components/system/RouterOutletLink.vue';
 
 const props = defineProps<{
     config: IForm
@@ -13,6 +13,9 @@ const props = defineProps<{
 const checkForm = (e: any) => {
     e.target.classList.add('was-validated');
 };
+
+const resetRoute = <any>{ name: 'reset_pass' };
+const signupRoute = <any>{ name: 'signup' };
 </script>
 
 <template>
@@ -22,10 +25,11 @@ const checkForm = (e: any) => {
 
             <form novalidate @submit.prevent="checkForm">
                 <MDBCardText>
+                    <!-- fields -->
                     <TextField v-for="field in config.fields" :field="field" />
-                    <RouterLink :to="{ name: 'reset_pass' }" class="text-black-50">
-                        {{ $t('reset_pass') }}
-                    </RouterLink>
+
+                    <!-- reset password -->
+                    <RouterOutletLink :route="resetRoute" class="text-black-50" />
                 </MDBCardText>
 
                 <MDBBtn type="submit" class="btn btn-block" size="lg" color="primary">
@@ -59,9 +63,7 @@ const checkForm = (e: any) => {
 
             <!-- registrace -->
             <p class="mt-5 mb-0">{{ $t('not_account') }}
-                <RouterLink :to="{ name: 'signup' }" class="text-black-50 fw-bold">
-                    {{ $t('route.signup') }}
-                </RouterLink>
+                <RouterOutletLink :route="signupRoute" class="text-black-50 fw-bold" />
             </p>
         </MDBCardBody>
     </MDBCard>

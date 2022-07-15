@@ -1,34 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { RouterLink } from 'vue-router';
-import {
-  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
-} from 'mdb-vue-ui-kit';
 
-import Logo from '@/components/img/Logo.vue';
-
-defineProps<{
+const props = defineProps<{
   site?: 'start' | 'end',
   data?: any[],
 }>();
-
-const sidenav = ref();
-const sidenavEl = ref();
-const xs = window.matchMedia('only screen and (max-width: 575.98px)');
-
-xs.onchange = (e: any) => toggle(e.matches)
-
-onMounted(() => {
-  toggle(xs.matches);
-});
-
-function toggle(state: boolean): void {
-  /* if (state) {
-    sidenav.value.hide();
-  } else {
-    sidenav.value.show();
-  } */
-}
 </script>
 
 <template>

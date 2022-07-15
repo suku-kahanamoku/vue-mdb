@@ -16,11 +16,12 @@ const open: Ref<boolean> = ref(false);
 </script>
 
 <template>
+  <!-- with dropdown -->
   <MDBDropdown v-if="data.length > 1" v-model="open" class="nav-link">
     <!-- toggle -->
     <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow rounded" :class="open ? '' : 'btn-link'"
       v-mdb-ripple="{ color: 'dark' }">
-      <MDBIcon icon="user" size="lg" />
+      <MDBIcon icon="user-tie" size="lg" />
     </MDBDropdownToggle>
 
     <!-- body -->
@@ -28,13 +29,15 @@ const open: Ref<boolean> = ref(false);
       <MDBDropdownItem v-for="route in data">
         <!-- nav link -->
         <span class="dropdown-item">
-          <RouterOutletLink :route="route" :sidenavCloseFnc="sidenavCloseFnc" />
+          <RouterOutletLink :route="route" :sidenavCloseFnc="sidenavCloseFnc" class="w-100 nav-link" />
         </span>
       </MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>
 
-  <RouterOutletLink v-else-if="data.length" :route="data[0]" :hideName="true" :sidenavCloseFnc="sidenavCloseFnc" />
+  <!-- only icon -->
+  <RouterOutletLink v-else-if="data.length" :route="data[0]" :hideName="true" :tooltip="true" class="nav-link"
+    :sidenavCloseFnc="sidenavCloseFnc" />
 </template>
 
 <style scoped>

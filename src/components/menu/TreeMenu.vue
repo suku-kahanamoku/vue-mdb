@@ -23,7 +23,7 @@ const open: Ref<boolean> = ref(false);
         <!-- with children -->
         <template v-if="route.children?.length">
           <!-- nav btn, collapse text -->
-          <RouterOutletLink :route="route" class="w-100 text-start" :disableTooltip="true" @click="open = !open" />
+          <RouterOutletLink :route="route" class="w-100 text-start nav-link" @click="open = !open" />
 
           <!-- collapse body -->
           <MDBCollapse v-model="open" class="ms-3">
@@ -32,8 +32,7 @@ const open: Ref<boolean> = ref(false);
         </template>
 
         <!-- without children -->
-        <RouterOutletLink v-else :route="route" class="w-100 text-start" :disableTooltip="true"
-          :sidenavCloseFnc="sidenavCloseFnc" />
+        <RouterOutletLink v-else :route="route" class="w-100 text-start nav-link" :sidenavCloseFnc="sidenavCloseFnc" />
       </template>
     </li>
   </ul>

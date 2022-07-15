@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, type Ref } from 'vue';
 import {
-  MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBBtn
+  MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBBtn, mdbRipple as vMdbRipple
 } from 'mdb-vue-ui-kit';
 import CountryFlag from 'vue-country-flag-next';
 
@@ -29,7 +29,7 @@ onMounted(() => {
 
 <template>
   <MDBDropdown v-if="selected" v-model="open">
-    <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow">
+    <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow" v-mdb-ripple="{ color: 'dark' }">
       <CountryFlag :country="selected.flag" />
     </MDBDropdownToggle>
     <MDBDropdownMenu>

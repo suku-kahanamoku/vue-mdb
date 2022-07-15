@@ -34,7 +34,7 @@ function closeSidenav() {
     </div>
 
     <!-- footer -->
-    <div class="d-flex align-items-center justify-content-between position-absolute bottom-0 w-100 start-0 px-4 py-2">
+    <div class="d-flex align-items-center justify-content-between position-absolute bottom-0 w-100 start-0 ps-1 pe-3 py-2">
       <PzMenu :data="pzData" :sidenavCloseFnc="closeSidenav" />
       <FlagMenu />
     </div>

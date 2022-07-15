@@ -10,37 +10,42 @@ const props = defineProps<{
     class?: string,
     sidenavCloseFnc?: Function,
     hideName?: boolean,
-    disableTooltip?: boolean
+    label?: string,
+    tooltip?: string | boolean,
 }>();
 
-const tooltip = ref(false);
+const tooltipRef = ref(false);
 </script>
 
 <template>
-    <RouterLink v-if="disableTooltip" :to="{ name: route.name, params: { locale: i18n.global.locale } }"
-        @click="sidenavCloseFnc && sidenavCloseFnc()" class="nav-link rounded w-100" :class="class"
-        v-mdb-ripple="{ color: 'dark' }" v-slot="{ isActive }">
-        <span :class="isActive ? '' : 'btn-link'">
-            <MDBIcon :icon="route.meta?.icon" size="lg" />
-        </span>
-        <span v-if="!hideName" class="ps-2">{{ $t(`route.${route.name as string}`) }}</span>
-    </RouterLink>
-
-    <MDBTooltip v-else v-model="tooltip" direction="bottom" class="w-100">
+    <MDBTooltip v-if="tooltip" v-model="tooltipRef" direction="bottom">
         <template #reference>
             <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }"
-                @click="sidenavCloseFnc && sidenavCloseFnc()" class="nav-link rounded w-100" :class="class"
+                @click="sidenavCloseFnc && sidenavCloseFnc()" class="rounded w-100" :class="class"
                 v-mdb-ripple="{ color: 'dark' }" v-slot="{ isActive }">
                 <span :class="isActive ? '' : 'btn-link'">
                     <MDBIcon :icon="route.meta?.icon" size="lg" />
                 </span>
-                <span v-if="!hideName" class="ps-2">{{ $t(`route.${route.name as string}`) }}</span>
+                <span v-if="!hideName" class="ps-2">
+                    {{ label ? $t(label) : $t(`route.${route.name as string}`) }}
+                </span>
             </RouterLink>
         </template>
         <template #tip>
-            {{ $t(`route.${route.name as string}`) }}
+            {{ $t(tooltip === true ? `route.${route.name as string} ` : tooltip) }}
         </template>
     </MDBTooltip>
+
+    <RouterLink v-else :to="{ name: route.name, params: { locale: i18n.global.locale } }"
+        @click="sidenavCloseFnc && sidenavCloseFnc()" class="rounded" :class="class" v-mdb-ripple="{ color: 'dark' }"
+        v-slot="{ isActive }">
+        <span :class="isActive ? '' : 'btn-link'">
+            <MDBIcon :icon="route.meta?.icon" size="lg" />
+        </span>
+        <span v-if="!hideName" class="ps-2">
+            {{ label ? $t(label) : $t(`route.${route.name as string}`) }}
+        </span>
+    </RouterLink>
 </template>
 
 <style scoped>
