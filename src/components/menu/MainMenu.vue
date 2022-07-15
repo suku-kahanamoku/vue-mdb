@@ -2,29 +2,27 @@
 import { ref, type Ref } from 'vue';
 import { RouterLink, type RouteRecordRaw } from 'vue-router';
 import {
-  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarItem, MDBTooltip
+  MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarItem
 } from 'mdb-vue-ui-kit';
 
-import i18n from '@/plugins/i18n';
 import Logo from '@/components/img/Logo.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
 import PzMenu from '@/components/menu/PzMenu.vue';
 import SideMenu from '@/components/menu/SideMenu.vue';
 import { FLAT_ROUTES, FILTER_ROUTES } from '@/utils/route.functions';
+import RouterOutletLink from '../system/RouterOutletLink.vue';
 
 const props = defineProps<{
   data: RouteRecordRaw[]
 }>();
 
 const sideSelector: string = 'sidenav';
-const isLogged: Ref<boolean> = ref(false);
+const isLogged: Ref<boolean> = ref(true);
 const toolbarData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['radar', 'contact']);
 const sidenavData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['home', 'login', 'logout', 'signup', 'reset_pass'], true);
 const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
   Object.values(FLAT_ROUTES(props.data)), isLogged.value ? ['profile', 'logout'] : ['login']
 );
-
-const tooltip = ref(false);
 </script>
 
 <template>
@@ -39,27 +37,25 @@ const tooltip = ref(false);
     <!-- toolbar menu -->
     <MDBNavbarNav class="d-flex flex-row" right>
       <!-- menu item -->
-      <div v-for="route in toolbarData" class="nav-link d-none d-sm-block me-3">
-        <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }">
-          <MDBIcon :icon="route.meta?.icon" />
-        </RouterLink>
-      </div>
+      <MDBNavbarItem v-for="route in toolbarData" class="d-none d-sm-block px-2">
+        <RouterOutletLink :route="route" :hideName="true" />
+      </MDBNavbarItem>
 
       <!-- login -->
-      <div class="me-3 nav-link">
+      <MDBNavbarItem class="px-2">
         <PzMenu :data="pzData" />
-      </div>
+      </MDBNavbarItem>
 
       <!-- lang -->
-      <div class="me-3">
+      <MDBNavbarItem class="px-2">
         <FlagMenu />
-      </div>
+      </MDBNavbarItem>
 
       <!-- hamburger btn -->
-      <div to="#" class="nav-link d-sm-none me-2" data-bs-toggle="offcanvas" :data-bs-target="`#${sideSelector}`"
-        role="button">
-        <MDBIcon icon="bars" />
-      </div>
+      <MDBNavbarItem class="nav-link d-sm-none mx-2" role="button" data-bs-toggle="offcanvas"
+        :data-bs-target="`#${sideSelector}`">
+        <MDBIcon icon="bars" size="lg" />
+      </MDBNavbarItem>
     </MDBNavbarNav>
 
     <!-- sidebar menu -->

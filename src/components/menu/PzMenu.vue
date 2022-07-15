@@ -1,43 +1,40 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
-import { RouterLink, type RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 import {
-  MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBNavbarItem
+  MDBIcon, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, mdbRipple as vMdbRipple
 } from 'mdb-vue-ui-kit';
 
-import i18n from '@/plugins/i18n';
+import RouterOutletLink from '@/components/system/RouterOutletLink.vue';
 
 const props = defineProps<{
   data: RouteRecordRaw[],
-  closeFnc?: Function
+  sidenavCloseFnc?: Function
 }>();
 
 const open: Ref<boolean> = ref(false);
 </script>
 
 <template>
-  <MDBDropdown v-if="data.length > 1" v-model="open">
+  <MDBDropdown v-if="data.length > 1" v-model="open" class="nav-link">
     <!-- toggle -->
-    <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow">
-      <MDBIcon icon="user" />
+    <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow rounded" :class="open ? '' : 'btn-link'"
+      v-mdb-ripple="{ color: 'dark' }">
+      <MDBIcon icon="user" size="lg" />
     </MDBDropdownToggle>
 
     <!-- body -->
     <MDBDropdownMenu>
       <MDBDropdownItem v-for="route in data">
         <!-- nav link -->
-        <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }" class="dropdown-item"
-          @click="closeFnc && closeFnc()">
-          {{ $t(`route.${route.name as string}`) }}
-        </RouterLink>
+        <span class="dropdown-item">
+          <RouterOutletLink :route="route" :sidenavCloseFnc="sidenavCloseFnc" />
+        </span>
       </MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>
 
-  <RouterLink v-else-if="data.length" :to="{ name: data[0].name, params: { locale: i18n.global.locale } }"
-    @click="closeFnc && closeFnc()">
-    <MDBIcon :icon="data[0]?.meta?.icon" />
-  </RouterLink>
+  <RouterOutletLink v-else-if="data.length" :route="data[0]" :hideName="true" :sidenavCloseFnc="sidenavCloseFnc" />
 </template>
 
 <style scoped>
