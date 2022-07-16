@@ -19,7 +19,7 @@ const signupRoute = <any>{ name: 'signup' };
 </script>
 
 <template>
-    <MDBCard class="p-4 text-center" shadow="5">
+    <MDBCard class="m-4 text-center" shadow="5">
         <MDBCardBody>
             <MDBCardTitle class="mb-5 text-uppercase h3" tag="h1">{{ $t('route.login') }}</MDBCardTitle>
 

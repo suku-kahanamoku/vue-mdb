@@ -5,7 +5,7 @@ import {
 } from 'mdb-vue-ui-kit';
 </script>
 <template>
-  <div>
+  <div class="h-100">
     <h1 class="text-uppercase h3 text-center m-5">{{ $t('route.dashboard') }}</h1>
     <section class="container">
       <div class="row">

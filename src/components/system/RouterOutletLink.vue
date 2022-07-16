@@ -22,8 +22,9 @@ const tooltipRef = ref(false);
     <MDBTooltip v-if="tooltip" v-model="tooltipRef" direction="bottom">
         <template #reference>
             <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }"
-                @click="sidenavCloseFnc && sidenavCloseFnc()" class="btn-link nav-link rounded d-flex p-2 w-100"
-                :class="class" v-mdb-ripple="{ color: 'dark' }" v-slot="{ isActive }">
+                @click="sidenavCloseFnc && sidenavCloseFnc()"
+                class="btn-link nav-link rounded d-flex align-items-center p-2" :class="class"
+                v-mdb-ripple="{ color: 'dark' }" v-slot="{ isActive }">
                 <span v-if="route.meta?.icon" :class="isActive ? '' : 'btn-link'">
                     <MDBIcon :icon="route.meta?.icon" :size="size || 'lg'" />
                 </span>
@@ -38,7 +39,8 @@ const tooltipRef = ref(false);
     </MDBTooltip>
 
     <RouterLink v-else :to="{ name: route.name, params: { locale: i18n.global.locale } }"
-        @click="sidenavCloseFnc && sidenavCloseFnc()" class="btn-link nav-link rounded d-flex p-2 w-100" :class="class"
+        @click="sidenavCloseFnc && sidenavCloseFnc()"
+        class="btn-link nav-link rounded d-flex align-items-center p-2" :class="class"
         v-mdb-ripple="{ color: 'dark' }" v-slot="{ isActive }">
         <span v-if="route.meta?.icon" :class="isActive ? '' : 'btn-link'">
             <MDBIcon :icon="route.meta?.icon" :size="size || 'lg'" />

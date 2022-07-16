@@ -19,13 +19,13 @@ const open: Ref<boolean> = ref(false);
 
 <template>
   <ul class="navbar-nav">
-    <li v-for="route in data">
+    <li v-for="route in data" class="mt-2">
       <template v-if="route?.meta?.visible !== false">
         <!-- with children -->
         <template v-if="route.children?.length">
           <!-- nav btn, collapse text -->
           <span class="d-flex align-items-center justify-content-between" @click="open = !open">
-            <RouterOutletLink :route="route" :size="size" />
+            <RouterOutletLink :route="route" :size="size" class="w-100" />
             <MDBBtn color="link">
               <MDBIcon :icon="open ? 'angle-up' : 'angle-right'" :size="size || 'lg'" />
             </MDBBtn>

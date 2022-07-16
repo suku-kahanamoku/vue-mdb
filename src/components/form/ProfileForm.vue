@@ -18,17 +18,21 @@ const backRoute = <any>{ name: 'login', meta: { icon: 'angle-left' } }
 </script>
 
 <template>
-    <MDBCard class="p-4 text-center" shadow="5">
+    <MDBCard class="my-5 text-center" shadow="5">
         <MDBCardBody>
-            <MDBCardTitle class="mb-5 text-uppercase h4" tag="h1">{{ $t('route.reset_pass') }}</MDBCardTitle>
+            <MDBCardTitle class="mb-5 text-uppercase h4" tag="h1">{{ $t('route.profile') }}</MDBCardTitle>
 
             <form novalidate @submit.prevent="checkForm">
-                <MDBCardText>
-                    <TextField v-for="field in config.fields" :field="field" />
-                </MDBCardText>
+                <div class="row">
+                    <div v-for="field in config.fields" class="col-sm-6">
+                        <MDBCardText>
+                            <TextField :field="field" />
+                        </MDBCardText>
+                    </div>
+                </div>
 
                 <div class="d-flex justify-content-between">
-                    <RouterOutletLink :route="backRoute" label="btn.back_to_login" class="text-black-50" />
+                    <MDBBtn type="submit" color="danger">{{ $t('btn.send') }}</MDBBtn>
                     <MDBBtn type="submit" color="primary">{{ $t('btn.send') }}</MDBBtn>
                 </div>
             </form>

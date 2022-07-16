@@ -10,7 +10,7 @@ import { FILTER_ROUTES } from '@/utils/route.functions';
 const adminData: RouteRecordRaw[] = <RouteRecordRaw[]>FILTER_ROUTES(data.routes as any, ['admin'])[0].children;
 </script>
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid h-100">
     <AdminMenu :data="adminData">
       <RouterOutlet />
     </AdminMenu>

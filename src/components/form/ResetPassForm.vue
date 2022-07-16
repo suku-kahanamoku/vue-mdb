@@ -18,7 +18,7 @@ const backRoute = <any>{ name: 'login', meta: { icon: 'angle-left' } }
 </script>
 
 <template>
-    <MDBCard class="p-4 text-center" shadow="5">
+    <MDBCard class="m-4 text-center" shadow="5">
         <MDBCardBody>
             <MDBCardTitle class="mb-5 text-uppercase h4" tag="h1">{{ $t('route.reset_pass') }}</MDBCardTitle>
 
