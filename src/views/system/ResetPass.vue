@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 import data from '@/assets/form.json';
-import ResetPass from '@/components/form/ResetPass.vue';
+import ResetPass from '@/components/form/ResetPassForm.vue';
 import type { IForm } from '@/components/form/form.interface';
 
 const config = data.reset_pass as IForm;

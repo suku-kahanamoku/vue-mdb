@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
 import {
-  MDBListGroup, MDBListGroupItem, MDBIcon, MDBNavbarNav, MDBNavbarItem
+  MDBListGroup, MDBListGroupItem, MDBIcon
 } from 'mdb-vue-ui-kit';
 
 import data from '@/assets/form.json';
-import Contact from '@/components/form/Contact.vue';
+import Contact from '@/components/form/ContactForm.vue';
 import type { IForm } from '@/components/form/form.interface';
 
 const config = data.contact as IForm;
