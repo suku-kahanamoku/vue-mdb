@@ -10,17 +10,15 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div id="wrapper" class="d-flex">
+  <div class="d-flex h-100">
     <!-- Sidebar -->
-    <div id="sidebar-wrapper" class="my-5 mx-3">
-      <TreeMenu :data="data" />
+    <div id="sidebar" class="my-5 h-100 overflow-hidden">
+      <TreeMenu :data="data" size="2x" />
     </div>
-    <!-- /#sidebar-wrapper -->
     <!-- Page Content -->
-    <div id="page-content-wrapper">
+    <div class="position-relative w-100">
       <slot></slot>
     </div>
-    <!-- /#page-content-wrapper -->
   </div>
 </template>
 
@@ -33,35 +31,22 @@ div {
   transition: all 0.5s ease;
 }
 
-#wrapper {
-  overflow: hidden;
-  height: 100%;
-}
-
-#sidebar-wrapper {
-  z-index: 1000;
+#sidebar {
   width: 250px;
-  height: 100%;
-}
-
-#wrapper #page-content-wrapper {
-  position: relative;
 }
 
 @media (max-width: 768px) {
-
-  #sidebar-wrapper {
+  #sidebar {
     width: 50px;
   }
 
-  #wrapper #sidebar-wrapper:hover {
+  #sidebar:hover {
     width: 250px;
   }
 }
 
 @media (max-width: 576px) {
-
-  #sidebar-wrapper {
+  #sidebar {
     width: 0;
   }
 }

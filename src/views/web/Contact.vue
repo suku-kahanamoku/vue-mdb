@@ -11,7 +11,7 @@ import type { IForm } from '@/components/form/form.interface';
 const config = data.contact as IForm;
 </script>
 <template>
-  <div class="container-flush">
+  <div>
     <h1 class="text-uppercase h3 text-center m-5">{{ $t('route.contact') }}</h1>
     <div class="container">
       <div class="row d-flex align-items-center">
@@ -62,11 +62,9 @@ const config = data.contact as IForm;
         </div>
       </div>
     </div>
-    <div class="container-flush">
-      <iframe class="mt-5"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.687519675741!2d76.68949051510494!3d30.699066881648925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feef64000002f%3A0xb4e01033fa0737dd!2sC.S.%20Soft%20Solutions%20(India)%20Pvt%20Ltd!5e0!3m2!1scs!2sus!4v1657947446713!5m2!1scs!2sus"
-        height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <iframe class="mt-5"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.687519675741!2d76.68949051510494!3d30.699066881648925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feef64000002f%3A0xb4e01033fa0737dd!2sC.S.%20Soft%20Solutions%20(India)%20Pvt%20Ltd!5e0!3m2!1scs!2sus!4v1657947446713!5m2!1scs!2sus"
+      height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </template>
 
