@@ -11,7 +11,7 @@ import type { IForm } from '@/components/form/form.interface';
 const config = data.contact as IForm;
 </script>
 <template>
-  <div>
+  <div class="container-flush">
     <h1 class="text-uppercase h3 text-center m-5">{{ $t('route.contact') }}</h1>
     <div class="container">
       <div class="row d-flex align-items-center">

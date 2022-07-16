@@ -12,6 +12,7 @@ const props = defineProps<{
     hideName?: boolean,
     label?: string,
     tooltip?: string | boolean,
+    size?: string
 }>();
 
 const tooltipRef = ref(false);
@@ -21,10 +22,10 @@ const tooltipRef = ref(false);
     <MDBTooltip v-if="tooltip" v-model="tooltipRef" direction="bottom">
         <template #reference>
             <RouterLink :to="{ name: route.name, params: { locale: i18n.global.locale } }"
-                @click="sidenavCloseFnc && sidenavCloseFnc()" class="rounded w-100" :class="class"
-                v-mdb-ripple="{ color: 'dark' }" v-slot="{ isActive }">
+                @click="sidenavCloseFnc && sidenavCloseFnc()" class="btn-link nav-link rounded d-flex p-2 w-100"
+                :class="class" v-mdb-ripple="{ color: 'dark' }" v-slot="{ isActive }">
                 <span v-if="route.meta?.icon" :class="isActive ? '' : 'btn-link'">
-                    <MDBIcon :icon="route.meta?.icon" size="lg" />
+                    <MDBIcon :icon="route.meta?.icon" :size="size || 'lg'" />
                 </span>
                 <span v-if="!hideName" class="ps-2">
                     {{ label ? $t(label) : $t(`route.${route.name as string}`) }}
@@ -37,10 +38,10 @@ const tooltipRef = ref(false);
     </MDBTooltip>
 
     <RouterLink v-else :to="{ name: route.name, params: { locale: i18n.global.locale } }"
-        @click="sidenavCloseFnc && sidenavCloseFnc()" class="rounded" :class="class" v-mdb-ripple="{ color: 'dark' }"
-        v-slot="{ isActive }">
+        @click="sidenavCloseFnc && sidenavCloseFnc()" class="btn-link nav-link rounded d-flex p-2 w-100" :class="class"
+        v-mdb-ripple="{ color: 'dark' }" v-slot="{ isActive }">
         <span v-if="route.meta?.icon" :class="isActive ? '' : 'btn-link'">
-            <MDBIcon :icon="route.meta?.icon" size="lg" />
+            <MDBIcon :icon="route.meta?.icon" :size="size || 'lg'" />
         </span>
         <span v-if="!hideName" class="ps-2">
             {{ label ? $t(label) : $t(`route.${route.name as string}`) }}

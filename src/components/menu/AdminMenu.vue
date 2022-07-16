@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import type { RouteRecordRaw } from 'vue-router';
+
+import TreeMenu from '@/components/menu/TreeMenu.vue';
 
 const props = defineProps<{
-  site?: 'start' | 'end',
-  data?: any[],
+  data: RouteRecordRaw[],
 }>();
 </script>
 
 <template>
   <div id="wrapper" class="d-flex">
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-      <div>fsda</div>
+    <div id="sidebar-wrapper" class="my-5 mx-3">
+      <TreeMenu :data="data" />
     </div>
     <!-- /#sidebar-wrapper -->
     <!-- Page Content -->

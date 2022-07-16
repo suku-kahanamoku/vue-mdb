@@ -18,7 +18,7 @@ const props = defineProps<{
 
 const sideSelector: string = 'sidenav';
 const isLogged: Ref<boolean> = ref(false);
-const toolbarData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['radar', 'contact']);
+const toolbarData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['radar', 'admin', 'contact']);
 const sidenavData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['home', 'login', 'logout', 'signup', 'reset_pass'], true);
 const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
   Object.values(FLAT_ROUTES(props.data)), isLogged.value ? ['profile', 'logout'] : ['login']
@@ -26,7 +26,7 @@ const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
 </script>
 
 <template>
-  <MDBNavbar light bg="light" container class="w-100">
+  <MDBNavbar light bg="light" container>
     <!-- logo -->
     <MDBNavbarBrand role="button">
       <RouterLink to="/">
@@ -37,22 +37,22 @@ const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
     <!-- toolbar menu -->
     <MDBNavbarNav class="d-flex flex-row" right>
       <!-- menu item -->
-      <MDBNavbarItem v-for="route in toolbarData" class="d-none d-sm-block px-2 nav-link">
+      <MDBNavbarItem v-for="route in toolbarData" class="d-none d-sm-block">
         <RouterOutletLink :route="route" :hideName="true" :tooltip="true" />
       </MDBNavbarItem>
 
       <!-- login -->
-      <MDBNavbarItem class="px-2">
+      <MDBNavbarItem>
         <PzMenu :data="pzData" />
       </MDBNavbarItem>
 
       <!-- lang -->
-      <MDBNavbarItem class="px-2">
+      <MDBNavbarItem>
         <FlagMenu />
       </MDBNavbarItem>
 
       <!-- hamburger btn -->
-      <MDBNavbarItem class="nav-link d-sm-none mx-2" role="button" data-bs-toggle="offcanvas"
+      <MDBNavbarItem class="d-sm-none p-2 mx-2" role="button" data-bs-toggle="offcanvas"
         :data-bs-target="`#${sideSelector}`">
         <MDBIcon icon="bars" size="lg" />
       </MDBNavbarItem>

@@ -29,7 +29,8 @@ onMounted(() => {
 
 <template>
   <MDBDropdown v-if="selected" v-model="open">
-    <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow" v-mdb-ripple="{ color: 'dark' }">
+    <MDBDropdownToggle tag="span" @click="open = !open" class="hidden-arrow px-2 rounded"
+      v-mdb-ripple="{ color: 'dark' }">
       <CountryFlag :country="selected.flag" />
     </MDBDropdownToggle>
     <MDBDropdownMenu>
