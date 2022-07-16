@@ -23,7 +23,12 @@ const open: Ref<boolean> = ref(false);
         <!-- with children -->
         <template v-if="route.children?.length">
           <!-- nav btn, collapse text -->
-          <RouterOutletLink :route="route" class="w-100 text-start nav-link" @click="open = !open" />
+          <span class="d-flex align-items-center justify-content-between" @click="open = !open">
+            <RouterOutletLink :route="route" class="w-100 text-start nav-link" />
+            <MDBBtn color="link">
+              <MDBIcon :icon="open ? 'angle-up' : 'angle-right'" size="lg" />
+            </MDBBtn>
+          </span>
 
           <!-- collapse body -->
           <MDBCollapse v-model="open" class="ms-3">
@@ -39,4 +44,7 @@ const open: Ref<boolean> = ref(false);
 </template>
 
 <style scoped>
+.navbar-nav .nav-link:hover {
+  background-color: #f5f5f5;
+}
 </style>

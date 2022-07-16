@@ -17,7 +17,7 @@ const props = defineProps<{
 }>();
 
 const sideSelector: string = 'sidenav';
-const isLogged: Ref<boolean> = ref(true);
+const isLogged: Ref<boolean> = ref(false);
 const toolbarData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['radar', 'contact']);
 const sidenavData: RouteRecordRaw[] = FILTER_ROUTES(props.data, ['home', 'login', 'logout', 'signup', 'reset_pass'], true);
 const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
