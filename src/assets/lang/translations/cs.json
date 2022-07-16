@@ -2,6 +2,7 @@
     "reset_pass": "Zapomenuté heslo?",
     "not_account": "Nemáte účet?",
     "success_logout": "Odhlášení ze systému proběhlo úspěšně.",
+    "write_us": "Napište nám",
     "route": {
         "home": "",
         "radar": "Radar",
@@ -31,6 +32,8 @@
         "phone": "Telefon",
         "msg": {
             "wrong_email": "Špatně zadaný E-mail!"
-        }
+        },
+        "category": "Oblast",
+        "message": "Zpráva"
     }
 }

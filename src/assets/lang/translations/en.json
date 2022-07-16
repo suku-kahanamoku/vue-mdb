@@ -2,6 +2,7 @@
     "reset_pass": "Forgot password?",
     "not_account": "Don't have an account?",
     "success_logout": "You have successfully logged out of the system.",
+    "write_us": "Write us",
     "route": {
         "home": "",
         "radar": "Radar",
@@ -31,6 +32,8 @@
         "phone": "Phone",
         "msg": {
             "wrong_email": "Wrong E-mail format!"
-        }
+        },
+        "category": "Category",
+        "message": "Message"
     }
 }

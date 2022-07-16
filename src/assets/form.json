@@ -94,5 +94,40 @@
                 "class": "mb-4"
             }
         ]
+    },
+    "contact": {
+        "fields": [
+            {
+                "name": "category",
+                "label": "form.category",
+                "class": "mb-4"
+            },
+            {
+                "type": "tel",
+                "name": "phone",
+                "label": "form.phone",
+                "required": true,
+                "autocomplete": "tel",
+                "class": "mb-4"
+            },
+            {
+                "type": "email",
+                "name": "email",
+                "label": "form.email",
+                "required": true,
+                "autocomplete": "email",
+                "class": "mb-4",
+                "validation": {
+                    "pattern": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+                    "msg": "form.msg.wrong_email"
+                }
+            },
+            {
+                "name": "message",
+                "label": "form.message",
+                "required": true,
+                "class": "mb-4"
+            }
+        ]
     }
 }
