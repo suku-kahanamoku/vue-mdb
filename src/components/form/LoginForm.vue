@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
 
 import type { IForm } from '@/components/form/form.interface';
 import TextField from '@/components/form/field/TextField.vue';
-import RouterOutletLink from '@/components/system/RouterOutletLink.vue';
+import i18n from '@/plugins/i18n';
 
 const props = defineProps<{
     config: IForm
@@ -29,7 +30,10 @@ const signupRoute = <any>{ name: 'signup' };
                     <TextField v-for="field in config.fields" :field="field" />
 
                     <!-- reset password -->
-                    <RouterOutletLink :route="resetRoute" class="text-black-50" />
+                    <RouterLink :to="{ name: resetRoute.name, params: { locale: i18n.global.locale } }"
+                        class="text-black-50">
+                        {{ $t(`route.${resetRoute.name as string}`) }}
+                    </RouterLink>
                 </MDBCardText>
 
                 <MDBBtn type="submit" class="btn btn-block" size="lg" color="primary">
@@ -62,8 +66,12 @@ const signupRoute = <any>{ name: 'signup' };
             </div>
 
             <!-- registrace -->
-            <p class="mt-5 mb-0">{{ $t('not_account') }}
-                <RouterOutletLink :route="signupRoute" class="text-black-50 fw-bold" />
+            <p class="mt-5 mb-0">{{ $t('not_account') }}&nbsp;
+                <!-- reset password -->
+                <RouterLink :to="{ name: signupRoute.name, params: { locale: i18n.global.locale } }"
+                    class="text-black-50  fw-bold">
+                    {{ $t(`route.${signupRoute.name as string}`) }}
+                </RouterLink>
             </p>
         </MDBCardBody>
     </MDBCard>

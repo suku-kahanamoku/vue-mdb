@@ -21,6 +21,8 @@
         "google_login": "Přihlášení google účtem",
         "fb_login": "Přihlášení facebook účtem",
         "send": "Odeslat",
+        "create": "Vytvořit",
+        "search": "Hledat",
         "back_to_login": "Zpět na přihlášení"
     },
     "form": {

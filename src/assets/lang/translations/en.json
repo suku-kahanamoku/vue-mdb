@@ -21,6 +21,8 @@
         "google_login": "Sign in with google",
         "fb_login": "Sign in with facebook",
         "send": "Submit",
+        "create": "Create",
+        "search": "Search",
         "back_to_login": "Back to login"
     },
     "form": {

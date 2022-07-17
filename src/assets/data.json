@@ -15,6 +15,13 @@
             }
         },
         {
+            "path": "contact",
+            "name": "contact",
+            "meta": {
+                "icon": "envelope-open-text"
+            }
+        },
+        {
             "path": "admin",
             "name": "admin",
             "redirect": {
@@ -46,13 +53,6 @@
                     }
                 }
             ]
-        },
-        {
-            "path": "contact",
-            "name": "contact",
-            "meta": {
-                "icon": "envelope-open-text"
-            }
         },
         {
             "path": "login",

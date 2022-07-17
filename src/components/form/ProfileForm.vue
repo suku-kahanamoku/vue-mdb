@@ -32,8 +32,8 @@ const backRoute = <any>{ name: 'login', meta: { icon: 'angle-left' } }
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <MDBBtn type="submit" color="danger">{{ $t('btn.send') }}</MDBBtn>
-                    <MDBBtn type="submit" color="primary">{{ $t('btn.send') }}</MDBBtn>
+                    <MDBBtn type="submit" color="danger">{{ $t('btn.create') }}</MDBBtn>
+                    <MDBBtn type="submit" color="primary">{{ $t('btn.search') }}</MDBBtn>
                 </div>
             </form>
 
