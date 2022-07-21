@@ -42,3 +42,25 @@ export function IS_FILE_URL(url: string): boolean {
 export function IS_NATIVE_LINK(url: string): boolean {
   return /^(mailto|tel):/gm.test(url);
 }
+
+/**
+ * Modifikuje a vrati url objekt, pro snazsi praci
+ *
+ * @export
+ * @param {string} [url='']
+ * @return {*}  {URL}
+ */
+export function GET_URL(url: string = ''): URL {
+  // lokalni adresa, dosadi lokalni host
+  if (url.substring(0, 2) === './') {
+    return new URL(document.location.pathname + url.substring(2), document.location.origin);
+  }
+  // absolutni adresa (muze byt i externi)
+  else if (IS_ABSOLUTE_URL(url)) {
+    return new URL(url);
+  }
+  // jinak (zbyva jen primi potomek napr. produkty/abc123), dosadi lokalni host
+  else {
+    return new URL(url, document.location.origin);
+  }
+}

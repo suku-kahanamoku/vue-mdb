@@ -5,6 +5,7 @@ import RouterOutlet from '@/components/system/RouterOutlet.vue';
 import PageNotFound from '@/views/system/404.vue';
 import data from '@/assets/data.json';
 import { MODIFY_ROUTES } from '@/plugins/utils/route.functions';
+import { STRINGIFY } from '@/plugins/utils/modify-object.function';
 
 i18n.global.locale = location.pathname.split('/')[1] || 'en';
 
@@ -23,7 +24,7 @@ export default createRouter({
       {
         path: '/:locale',
         component: RouterOutlet,
-        children: JSON.parse(JSON.stringify(data.routes)),
+        children: JSON.parse(STRINGIFY(data.routes)),
       }
     ],
     {
