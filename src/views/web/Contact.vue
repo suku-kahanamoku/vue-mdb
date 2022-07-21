@@ -6,7 +6,7 @@ import {
 
 import data from '@/assets/form.json';
 import Contact from '@/components/form/ContactForm.vue';
-import type { IForm } from '@/components/form/form.interface';
+import type { IForm } from '@/plugins/form/form.interface';
 
 const config = data.contact as IForm;
 </script>

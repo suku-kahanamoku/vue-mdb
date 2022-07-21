@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from "vue-router";
 
 import i18n from "@/plugins/i18n";
-import { REMOVE_DIACRITICS } from "@/utils/modify-string.functions";
+import { REMOVE_DIACRITICS } from "@/plugins/utils/modify-string.functions";
 
 /**
  *

@@ -9,7 +9,9 @@ import RouterOutlet from '@/components/system/RouterOutlet.vue';
 
 <template>
   <MainMenu :data="(data.routes as any)" />
-  <RouterOutlet />
+  <main>
+    <RouterOutlet />
+  </main>
   <FooterMenu />
 </template>
 

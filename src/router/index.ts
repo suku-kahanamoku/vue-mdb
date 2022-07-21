@@ -4,7 +4,7 @@ import i18n from '@/plugins/i18n';
 import RouterOutlet from '@/components/system/RouterOutlet.vue';
 import PageNotFound from '@/views/system/404.vue';
 import data from '@/assets/data.json';
-import { MODIFY_ROUTES } from '@/utils/route.functions';
+import { MODIFY_ROUTES } from '@/plugins/utils/route.functions';
 
 i18n.global.locale = location.pathname.split('/')[1] || 'en';
 

@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
 
-import type { IForm } from '@/components/form/form.interface';
+import type { IForm } from '@/plugins/form/form.interface';
 import TextField from '@/components/form/field/TextField.vue';
 import i18n from '@/plugins/i18n';
 

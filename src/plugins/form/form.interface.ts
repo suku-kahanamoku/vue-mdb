@@ -1,4 +1,4 @@
-import type { IFormField } from './field/field.interface';
+import type { IFormField } from './field.interface';
 
 /**
  *

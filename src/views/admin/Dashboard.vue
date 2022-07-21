@@ -5,17 +5,15 @@ import {
 } from 'mdb-vue-ui-kit';
 </script>
 <template>
-  <div class="h-100">
+  <div class="container h-100">
     <h1 class="text-uppercase h3 text-center m-5">{{ $t('route.dashboard') }}</h1>
-    <section class="container">
-      <div class="row">
-        <div class="col-6">
-          fdsafsd
-        </div>
-        <div class="col-6">
-          stahnout nejaky charts
-        </div>
+    <div class="row">
+      <div class="col-6">
+        fdsafsd
       </div>
-    </section>
+      <div class="col-6">
+        stahnout nejaky charts
+      </div>
+    </div>
   </div>
 </template>

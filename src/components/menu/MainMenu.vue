@@ -9,7 +9,7 @@ import Logo from '@/components/img/Logo.vue';
 import FlagMenu from '@/components/menu/FlagMenu.vue';
 import PzMenu from '@/components/menu/PzMenu.vue';
 import SideMenu from '@/components/menu/SideMenu.vue';
-import { FLAT_ROUTES, FILTER_ROUTES } from '@/utils/route.functions';
+import { FLAT_ROUTES, FILTER_ROUTES } from '@/plugins/utils/route.functions';
 import RouterOutletLink from '@/components/system/RouterOutletLink.vue';
 
 const props = defineProps<{
@@ -26,7 +26,7 @@ const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
 </script>
 
 <template>
-  <MDBNavbar light bg="light" container>
+  <MDBNavbar light bg="light" container class="shadow-sm">
     <!-- logo -->
     <MDBNavbarBrand role="button">
       <RouterLink to="/">
@@ -38,11 +38,11 @@ const pzData: RouteRecordRaw[] | RouteRecordRaw = FILTER_ROUTES(
     <MDBNavbarNav class="d-flex flex-row" right>
       <!-- menu item -->
       <MDBNavbarItem v-for="route in toolbarData" class="d-none d-sm-block">
-        <RouterOutletLink :route="route" :hideName="true" :tooltip="true" />
+        <RouterOutletLink :route="route" :hideName="false" :tooltip="true" />
       </MDBNavbarItem>
 
       <!-- login -->
-      <MDBNavbarItem>
+      <MDBNavbarItem class="ms-3">
         <PzMenu :data="pzData" />
       </MDBNavbarItem>
 

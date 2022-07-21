@@ -3,7 +3,7 @@ import { ref } from 'vue';
 
 import data from '@/assets/form.json';
 import Signup from '@/components/form/SignupForm.vue';
-import type { IForm } from '@/components/form/form.interface';
+import type { IForm } from '@/plugins/form/form.interface';
 
 const config = data.signup as IForm;
 </script>

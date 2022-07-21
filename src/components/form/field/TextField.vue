@@ -2,8 +2,8 @@
 import { ref, onMounted, type Ref } from 'vue';
 import { MDBInput, MDBIcon } from 'mdb-vue-ui-kit';
 
-import type { IFormField } from '@/components/form/field/field.interface';
-import { DETECT_AUTOFILL } from '@/utils/check.functions';
+import type { IFormField } from '@/plugins/form/field.interface';
+import { DETECT_AUTOFILL } from '@/plugins/utils/check.functions';
 
 const props = defineProps<{
     field: IFormField,
