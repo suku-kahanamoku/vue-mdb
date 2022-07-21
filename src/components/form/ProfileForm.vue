@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdb-vue-ui-kit';
 
 import type { IForm } from '@/plugins/form/form.interface';
 import TextField from '@/components/form/field/TextField.vue';
-import RouterOutletLink from '@/components/system/RouterOutletLink.vue';
+import { Form } from '@/plugins/form/Form.class';
 
 const props = defineProps<{
     config: IForm
 }>();
+
+new Form()
 
 const checkForm = (e: any) => {
     e.target.classList.add('was-validated');

@@ -3,7 +3,7 @@ import { TRIM, RTRIM, GET_MARK } from "@/plugins/utils/modify-string.functions";
 import { GET_URL } from "@/plugins/utils/check-url.functions";
 import { ITERATE, STRINGIFY } from "@/plugins/utils/modify-object.function";
 
-export class MpHttp {
+export class HttpService {
 
     /**
      * Libovolny get bez hlavicek
@@ -11,19 +11,10 @@ export class MpHttp {
      * @param {string} url
      * @param {RequestInit} [options]
      * @return {*}  {Promise<Response>}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     async get(url: string, options?: RequestInit): Promise<Response> {
         return fetch(TRIM(TRIM(url, '&'), '/'), options);
-    }
-
-    protected _getOptions(options: RequestInit, method: 'POST' | 'PATCH' | 'GET' | 'PUT' | 'DELETE' = 'GET', fields?: any): RequestInit {
-        options.method = options.method || method;
-        options.headers = options.headers || { 'Content-Type': 'application/json' };
-        if (fields) {
-            options.body = STRINGIFY(fields);
-        }
-        return options;
     }
 
     /**
@@ -33,7 +24,7 @@ export class MpHttp {
      * @param {*} fields
      * @param {RequestInit} [options]
      * @return {*}  {Promise<Response>}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     async post(url: string, fields: any, options?: RequestInit): Promise<Response> {
         return fetch(TRIM(TRIM(url, '&'), '/'), this._getOptions(options || {}, 'POST', fields));
@@ -46,7 +37,7 @@ export class MpHttp {
      * @param {*} fields
      * @param {RequestInit} [options]
      * @return {*}  {Promise<Response>}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     async put(url: string, fields: any, options?: RequestInit): Promise<Response> {
         return fetch(TRIM(TRIM(url, '&'), '/'), this._getOptions(options || {}, 'PUT', fields));
@@ -60,7 +51,7 @@ export class MpHttp {
      * @param {string} etag
      * @param {RequestInit} [options]
      * @return {*}  {Promise<Response>}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     async patch(url: string, fields: any, etag: string, options?: RequestInit): Promise<Response> {
         options = this._getOptions(options || {}, 'PATCH', fields);
@@ -74,7 +65,7 @@ export class MpHttp {
      * @param {string} url
      * @param {RequestInit} [options]
      * @return {*}  {Promise<Response>}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     async delete(url: string, options?: RequestInit): Promise<Response> {
         return fetch(TRIM(TRIM(url, '&'), '/'), this._getOptions(options || {}, 'DELETE'));
@@ -87,7 +78,7 @@ export class MpHttp {
      * @param {*} [value]
      * @param {*} [params={}]
      * @return {*}  {Promise<Response>}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     async load(model: string, value?: any, params: any = {}): Promise<Response> {
         return this.get(this.createParams(`/_/${model}` + (value ? `/${value}` : ''), params));
@@ -101,7 +92,7 @@ export class MpHttp {
      * @param {*} [params={}]
      * @param {string} [condition='$in']
      * @return {*}  {Promise<Response>}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     async loadByIds(
         model: string, entityIds: string[], params: any = {}, condition: string = '$in'
@@ -120,7 +111,7 @@ export class MpHttp {
      * @param {*} [params={}]
      * @param {string} [condition='$in']
      * @return {*}  {Promise<Response>}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     async loadByCategory(
         model: string,
@@ -137,12 +128,36 @@ export class MpHttp {
     /* =================================================================================================== */
 
     /**
+     * Vrati options
+     *
+     * @protected
+     * @param {RequestInit} options
+     * @param {('POST' | 'PATCH' | 'GET' | 'PUT' | 'DELETE')} [method='GET']
+     * @param {*} [fields]
+     * @return {*}  {RequestInit}
+     * @memberof HttpService
+     */
+    protected _getOptions(options: RequestInit, method: 'POST' | 'PATCH' | 'GET' | 'PUT' | 'DELETE' = 'GET', fields?: any): RequestInit {
+        options.method = options.method || method;
+        // nastavi hlavicky
+        const isLogged = false;
+        const headers = options.headers || <any>{ 'Content-Type': 'application/json' };
+        headers.Authorization = isLogged ? 'Bearer TOKEN' : undefined;
+        options.headers = headers;
+        // nastavi fieldy
+        if (fields) {
+            options.body = STRINGIFY(fields);
+        }
+        return options;
+    }
+
+    /**
      * Vytvori parametru napr. where, sort, ..
      *
      * @param {string} [url='']
      * @param {*} [params={}]
      * @return {*}  {string}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     createParams(url: string = '', params: any = {}): string {
         url = RTRIM(url, '/');
@@ -182,7 +197,7 @@ export class MpHttp {
      * @protected
      * @param {*} [params={}]
      * @return {*}  {string}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     protected _generateFilters(params: any = {}): string {
         const filters: any[] = [];
@@ -207,7 +222,7 @@ export class MpHttp {
      * @protected
      * @param {*} [params={}]
      * @return {*}  {string}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     protected _generatePagination(params: any = {}): string {
         const filters = [];
@@ -229,7 +244,7 @@ export class MpHttp {
      * @protected
      * @param {*} [params={}]
      * @return {*}  {string}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     protected _generateWhere(params: any = {}): string {
         const query: any[] = [];
@@ -291,7 +306,7 @@ export class MpHttp {
      * @param {(string | number | any[])} value
      * @param {string} [type]
      * @return {*}  {(string | number)}
-     * @memberof MpHttp
+     * @memberof HttpService
      */
     protected _getValue(value: string | number | any[], type?: string): string | number {
         // pokud je pole
