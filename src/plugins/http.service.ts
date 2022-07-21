@@ -17,6 +17,15 @@ export class MpHttp {
         return fetch(TRIM(TRIM(url, '&'), '/'), options);
     }
 
+    protected _getOptions(options: RequestInit, method: 'POST' | 'PATCH' | 'GET' | 'PUT' | 'DELETE' = 'GET', fields?: any): RequestInit {
+        options.method = options.method || method;
+        options.headers = options.headers || { 'Content-Type': 'application/json' };
+        if (fields) {
+            options.body = STRINGIFY(fields);
+        }
+        return options;
+    }
+
     /**
      * Post kamkoliv
      *
@@ -27,12 +36,7 @@ export class MpHttp {
      * @memberof MpHttp
      */
     async post(url: string, fields: any, options?: RequestInit): Promise<Response> {
-        url = TRIM(TRIM(url, '&'), '/');
-        options = options || {};
-        options.method = 'POST';
-        options.headers = options.headers || { 'Content-Type': 'application/json' };
-        options.body = STRINGIFY(fields);
-        return fetch(TRIM(TRIM(url, '&'), '/'), options);
+        return fetch(TRIM(TRIM(url, '&'), '/'), this._getOptions(options || {}, 'POST', fields));
     }
 
     /**
@@ -45,12 +49,7 @@ export class MpHttp {
      * @memberof MpHttp
      */
     async put(url: string, fields: any, options?: RequestInit): Promise<Response> {
-        url = TRIM(TRIM(url, '&'), '/');
-        options = options || {};
-        options.method = 'PUT';
-        options.headers = options.headers || { 'Content-Type': 'application/json' };
-        options.body = STRINGIFY(fields);
-        return fetch(TRIM(TRIM(url, '&'), '/'), options);
+        return fetch(TRIM(TRIM(url, '&'), '/'), this._getOptions(options || {}, 'PUT', fields));
     }
 
     /**
@@ -64,11 +63,8 @@ export class MpHttp {
      * @memberof MpHttp
      */
     async patch(url: string, fields: any, etag: string, options?: RequestInit): Promise<Response> {
-        url = TRIM(TRIM(url, '&'), '/');
-        options = options || {};
-        options.method = 'PATCH';
-        options.headers = options.headers || { 'Content-Type': 'application/json', 'If-Match': etag };
-        options.body = STRINGIFY(fields);
+        options = this._getOptions(options || {}, 'PATCH', fields);
+        options.headers = { 'Content-Type': 'application/json', 'If-Match': etag };
         return fetch(TRIM(TRIM(url, '&'), '/'), options);
     }
 
@@ -81,11 +77,7 @@ export class MpHttp {
      * @memberof MpHttp
      */
     async delete(url: string, options?: RequestInit): Promise<Response> {
-        url = TRIM(TRIM(url, '&'), '/');
-        options = options || {};
-        options.method = 'DELETE';
-        options.headers = options.headers || { 'Content-Type': 'application/json' };
-        return fetch(TRIM(TRIM(url, '&'), '/'), options);
+        return fetch(TRIM(TRIM(url, '&'), '/'), this._getOptions(options || {}, 'DELETE'));
     }
 
     /**
@@ -98,8 +90,7 @@ export class MpHttp {
      * @memberof MpHttp
      */
     async load(model: string, value?: any, params: any = {}): Promise<Response> {
-        const url = `/_/${model}` + (value ? `/${value}` : '');
-        return this.get(this.createParams(url, params));
+        return this.get(this.createParams(`/_/${model}` + (value ? `/${value}` : ''), params));
     }
 
     /**
